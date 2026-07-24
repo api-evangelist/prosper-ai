@@ -1,0 +1,20 @@
+openapi: 3.1.0
+info:
+  title: Prosper Voice API Keys Status API
+  version: 1.0.0
+tags:
+- name: Status
+paths:
+  /api/v1/health:
+    get:
+      tags:
+      - Status
+      summary: Health Check
+      description: Health check endpoint for monitoring service status.
+      operationId: health_check_api_v1_health_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}

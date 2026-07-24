@@ -1,0 +1,1325 @@
+openapi: 3.1.0
+info:
+  title: Prosper Voice API Keys Campaigns API
+  version: 1.0.0
+tags:
+- name: Campaigns
+paths:
+  /api/v1/campaigns/{campaign_id}/calls:
+    post:
+      tags:
+      - Campaigns
+      summary: Campaign Calls
+      operationId: campaign_calls_api_v1_campaigns__campaign_id__calls_post
+      parameters:
+      - name: campaign_id
+        in: path
+        required: true
+        schema:
+          type: string
+          description: The ID of the campaign.
+          title: Campaign Id
+        description: The ID of the campaign.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LaunchTargetsRequest'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/campaigns/{campaign_id}/targets:
+    post:
+      tags:
+      - Campaigns
+      summary: Add Targets
+      description: Add targets to a campaign
+      operationId: add_targets_api_v1_campaigns__campaign_id__targets_post
+      parameters:
+      - name: campaign_id
+        in: path
+        required: true
+        schema:
+          type: string
+          description: The ID of the campaign to add targets to.
+          title: Campaign Id
+        description: The ID of the campaign to add targets to.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddTargetsRequest'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    delete:
+      tags:
+      - Campaigns
+      summary: Delete Targets
+      description: Delete targets from a campaign
+      operationId: delete_targets_api_v1_campaigns__campaign_id__targets_delete
+      parameters:
+      - name: campaign_id
+        in: path
+        required: true
+        schema:
+          type: string
+          description: The ID of the campaign to delete targets from.
+          title: Campaign Id
+        description: The ID of the campaign to delete targets from.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeleteTargetsRequest'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    get:
+      tags:
+      - Campaigns
+      summary: Get Campaign Targets
+      operationId: get_campaign_targets_api_v1_campaigns__campaign_id__targets_get
+      parameters:
+      - name: campaign_id
+        in: path
+        required: true
+        schema:
+          type: string
+          description: The ID of the campaign.
+          title: Campaign Id
+        description: The ID of the campaign.
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 0
+          description: The page number to get.
+          default: 0
+          title: Page
+        description: The page number to get.
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          maximum: 100
+          minimum: 1
+          description: The number of targets per page.
+          default: 10
+          title: Limit
+        description: The number of targets per page.
+      - name: status
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - $ref: '#/components/schemas/CampaignTargetStatus'
+          - type: 'null'
+          description: The status of the targets to get.
+          title: Status
+        description: The status of the targets to get.
+      - name: from_date
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          description: The start date to get.
+          examples:
+          - '2024-01-01'
+          title: From Date
+        description: The start date to get.
+      - name: to_date
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          description: The end date to get.
+          examples:
+          - '2024-01-01'
+          title: To Date
+        description: The end date to get.
+      - name: from_last_call_date
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          description: The date to get targets from the last call date.
+          examples:
+          - '2024-01-01'
+          title: From Last Call Date
+        description: The date to get targets from the last call date.
+      - name: to_last_call_date
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          description: The date to get targets to the last call date.
+          examples:
+          - '2024-01-01'
+          title: To Last Call Date
+        description: The date to get targets to the last call date.
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedCampaignTargetsResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/campaigns/{campaign_id}/variables:
+    get:
+      tags:
+      - Campaigns
+      summary: Get Required Variables
+      description: If successful returns a json with the needed variables for the campaign.
+      operationId: get_required_variables_api_v1_campaigns__campaign_id__variables_get
+      parameters:
+      - name: campaign_id
+        in: path
+        required: true
+        schema:
+          type: string
+          description: The ID of the campaign to get the variables from.
+          title: Campaign Id
+        description: The ID of the campaign to get the variables from.
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/campaigns/{campaign_id}/targets/{target_id}/step/{friendly_id}:
+    post:
+      tags:
+      - Campaigns
+      summary: Receive Webhook Step
+      operationId: receive_webhook_step_api_v1_campaigns__campaign_id__targets__target_id__step__friendly_id__post
+      parameters:
+      - name: target_id
+        in: path
+        required: true
+        schema:
+          type: string
+          description: The ID of the target.
+          title: Target Id
+        description: The ID of the target.
+      - name: campaign_id
+        in: path
+        required: true
+        schema:
+          type: string
+          description: The ID of the campaign.
+          title: Campaign Id
+        description: The ID of the campaign.
+      - name: friendly_id
+        in: path
+        required: true
+        schema:
+          type: string
+          description: The friendly ID of the step.
+          title: Friendly Id
+        description: The friendly ID of the step.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+              title: Target Data
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/campaigns/{campaign_id}/ehr-event/{friendly_id}:
+    post:
+      tags:
+      - Campaigns
+      summary: Receive Ehr Event Step
+      operationId: receive_ehr_event_step_api_v1_campaigns__campaign_id__ehr_event__friendly_id__post
+      parameters:
+      - name: campaign_id
+        in: path
+        required: true
+        schema:
+          type: string
+          description: The ID of the campaign.
+          title: Campaign Id
+        description: The ID of the campaign.
+      - name: friendly_id
+        in: path
+        required: true
+        schema:
+          type: string
+          description: The friendly ID of the step.
+          title: Friendly Id
+        description: The friendly ID of the step.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Body_receive_ehr_event_step_api_v1_campaigns__campaign_id__ehr_event__friendly_id__post'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/campaigns/{campaign_id}/webhooks/rerun-failed:
+    post:
+      tags:
+      - Campaigns
+      summary: Rerun Failed Webhooks
+      description: Re-run failed webhook notifications for a campaign within a time window.
+      operationId: rerun_failed_webhooks_api_v1_campaigns__campaign_id__webhooks_rerun_failed_post
+      parameters:
+      - name: campaign_id
+        in: path
+        required: true
+        schema:
+          type: string
+          description: The ID of the campaign.
+          title: Campaign Id
+        description: The ID of the campaign.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RerunFailedWebhooksBody'
+      responses:
+        '202':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/campaigns/{campaign_id}/patient/targets:
+    get:
+      tags:
+      - Campaigns
+      summary: Get Patient Campaign Targets
+      operationId: get_patient_campaign_targets_api_v1_campaigns__campaign_id__patient_targets_get
+      parameters:
+      - name: campaign_id
+        in: path
+        required: true
+        schema:
+          type: string
+          description: The ID of the campaign.
+          title: Campaign Id
+        description: The ID of the campaign.
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 0
+          description: The page number to get.
+          default: 0
+          title: Page
+        description: The page number to get.
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          maximum: 100
+          minimum: 1
+          description: The number of targets per page.
+          default: 10
+          title: Limit
+        description: The number of targets per page.
+      - name: status
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - $ref: '#/components/schemas/CampaignTargetStatus'
+          - type: 'null'
+          description: The status of the targets to get.
+          title: Status
+        description: The status of the targets to get.
+      - name: from_date
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          description: The start date to get.
+          examples:
+          - '2024-01-01'
+          title: From Date
+        description: The start date to get.
+      - name: to_date
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          description: The end date to get.
+          examples:
+          - '2024-01-01'
+          title: To Date
+        description: The end date to get.
+      - name: from_last_call_date
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          description: The date to get targets from the last call date.
+          examples:
+          - '2024-01-01'
+          title: From Last Call Date
+        description: The date to get targets from the last call date.
+      - name: to_last_call_date
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          description: The date to get targets to the last call date.
+          examples:
+          - '2024-01-01'
+          title: To Last Call Date
+        description: The date to get targets to the last call date.
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedCampaignTargetsPatientResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    PatientIncomingCallCategory:
+      type: string
+      enum:
+      - TRANSFER_BY_USER
+      - TRANSFER_BY_ASSISTANT
+      - INSTANT_TRANSFER
+      - TRANSFER
+      - TRANSFER_FAILED
+      - CALL_DROPPED
+      - SUCCESSFUL_CALL
+      - UNSUCCESSFUL_CALL
+      - NO_RESPONSE
+      - NOT_CONNECTED
+      title: PatientIncomingCallCategory
+    CampaignTargetPayorResolution:
+      type: string
+      enum:
+      - retrieved
+      - not_retrieved
+      title: CampaignTargetPayorResolution
+    IVRLoopSubCategory:
+      type: string
+      enum:
+      - NOT_RECOGNIZE_DATA
+      - NOT_FOUND
+      - LONG_WAITING_PERIOD
+      - BAD_INTERACTION_WITH_IVR
+      - IVR_ONLY_NUMBER
+      - VOICEMAIL
+      - CALLBACK_OFFERED
+      title: IVRLoopSubCategory
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+        input:
+          title: Input
+        ctx:
+          type: object
+          title: Context
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    WeekSchedule:
+      properties:
+        monday:
+          items:
+            $ref: '#/components/schemas/TimeIntervalNoTz'
+          type: array
+          title: Monday
+        tuesday:
+          items:
+            $ref: '#/components/schemas/TimeIntervalNoTz'
+          type: array
+          title: Tuesday
+        wednesday:
+          items:
+            $ref: '#/components/schemas/TimeIntervalNoTz'
+          type: array
+          title: Wednesday
+        thursday:
+          items:
+            $ref: '#/components/schemas/TimeIntervalNoTz'
+          type: array
+          title: Thursday
+        friday:
+          items:
+            $ref: '#/components/schemas/TimeIntervalNoTz'
+          type: array
+          title: Friday
+        saturday:
+          items:
+            $ref: '#/components/schemas/TimeIntervalNoTz'
+          type: array
+          title: Saturday
+        sunday:
+          items:
+            $ref: '#/components/schemas/TimeIntervalNoTz'
+          type: array
+          title: Sunday
+        tz:
+          type: string
+          title: Tz
+          default: US/Eastern
+      type: object
+      title: WeekSchedule
+    HumanOnlySubcategory:
+      type: string
+      enum:
+      - STARTING_CALL
+      - MID_CALL
+      title: HumanOnlySubcategory
+    PatientIncomingSchedulingCallCategory:
+      type: string
+      enum:
+      - SWITCHBOARD
+      - DEFLECTED
+      - NO_RESPONSE
+      - USER_EARLY_DISCONNECT
+      - FAST_USER_HANG_UP
+      - TRANSFER_SOP
+      - UNRESOLVED
+      title: PatientIncomingSchedulingCallCategory
+    PaginatedCampaignTargetsPatientResponse:
+      properties:
+        targets:
+          items:
+            $ref: '#/components/schemas/CampaignTargetPatientResponse'
+          type: array
+          title: Targets
+        page_count:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Page Count
+        next_page:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Next Page
+      type: object
+      required:
+      - targets
+      title: PaginatedCampaignTargetsPatientResponse
+      description: 'Paginated response for patient campaign targets using the optimized
+
+        vw_campaign_targets_export_patient view (no fax_links or payor_api_data).'
+    PatientCallCategory:
+      type: string
+      enum:
+      - GOOD
+      - NO_RESPONSE
+      - TRANSFER
+      - TRANSFER_FAILED
+      - VOICEMAIL
+      - SERVICE_NOT_AVAILABLE
+      - HUMAN_ONLY
+      - CALLBACK_REQUESTED
+      - MANAGER_REQUESTED
+      - DISCONNECTED
+      - DNC_REQUESTED
+      - WRONG_USER
+      - NOT_INTERESTED_RIGHT_NOW
+      - BLACKLISTED_PHONE
+      title: PatientCallCategory
+    CampaignTargetPatientResponse:
+      properties:
+        id:
+          type: string
+          title: Id
+        target_url:
+          type: string
+          title: Target Url
+        organization_id:
+          type: string
+          title: Organization Id
+        campaign_id:
+          type: string
+          title: Campaign Id
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+        execution_minutes:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Execution Minutes
+        input_data:
+          additionalProperties: true
+          type: object
+          title: Input Data
+        output_data:
+          additionalProperties: true
+          type: object
+          title: Output Data
+        status:
+          $ref: '#/components/schemas/CampaignTargetStatus'
+        resolution:
+          anyOf:
+          - $ref: '#/components/schemas/CampaignTargetPayorResolution'
+          - $ref: '#/components/schemas/CampaignTargetPatientResolution'
+          - type: 'null'
+          title: Resolution
+        category:
+          anyOf:
+          - $ref: '#/components/schemas/PayorCallCategory'
+          - $ref: '#/components/schemas/PatientCallCategory'
+          - $ref: '#/components/schemas/ProviderCallCategory'
+          - $ref: '#/components/schemas/PatientIncomingCallCategory'
+          - $ref: '#/components/schemas/PatientIncomingSchedulingCallCategory'
+          - type: 'null'
+          title: Category
+        subcategory:
+          anyOf:
+          - $ref: '#/components/schemas/NotFoundSubCategory'
+          - $ref: '#/components/schemas/TransferSubCategory'
+          - $ref: '#/components/schemas/IVRLoopSubCategory'
+          - $ref: '#/components/schemas/ServiceNotAvailableSubCategory'
+          - $ref: '#/components/schemas/UnprocessableByPhoneSubCategory'
+          - $ref: '#/components/schemas/InputDataIssueSubCategory'
+          - $ref: '#/components/schemas/HumanOnlySubcategory'
+          - $ref: '#/components/schemas/PayorCallCategory'
+          - type: string
+          - type: 'null'
+          title: Subcategory
+        call_log_ids:
+          anyOf:
+          - items:
+              type: integer
+            type: array
+          - type: 'null'
+          title: Call Log Ids
+        last_call_date:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Last Call Date
+        phone_number:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Phone Number
+        fax_links:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          title: Fax Links
+        payor_api_data:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          title: Payor Api Data
+        external_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: External Id
+        updated_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Updated At
+        retries:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Retries
+        scheduled_time:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Scheduled Time
+        categorization:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          title: Categorization
+        outcome:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Outcome
+        statistics:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          title: Statistics
+      type: object
+      required:
+      - id
+      - target_url
+      - organization_id
+      - campaign_id
+      - created_at
+      - execution_minutes
+      - input_data
+      - output_data
+      - status
+      - resolution
+      - category
+      - subcategory
+      - call_log_ids
+      - last_call_date
+      - phone_number
+      - fax_links
+      - payor_api_data
+      - external_id
+      title: CampaignTargetPatientResponse
+      description: 'Simplified response for patient campaign targets that uses the optimized
+
+        vw_campaign_targets_export_patient view. This view excludes fax_links and
+
+        payor_api_data for better performance.'
+    DeleteTargetsRequest:
+      properties:
+        target_ids:
+          items:
+            type: string
+          type: array
+          title: Target Ids
+          description: The IDs of the targets to delete
+          examples:
+          - - 1234-abcd-1234
+            - 5678-efgh-5678
+      type: object
+      required:
+      - target_ids
+      title: DeleteTargetsRequest
+    PayorCallCategory:
+      type: string
+      enum:
+      - GOOD
+      - NO_RESPONSE
+      - TRANSFER
+      - TRANSFER_FAILED
+      - VOICEMAIL
+      - SERVICE_NOT_AVAILABLE
+      - HUMAN_ONLY
+      - AFTER_HOURS
+      - CLOSED_FOR_HOLIDAYS
+      - IVR_LOOP
+      - INPUT_DATA_ISSUE
+      - WRONG_PHONE_NUMBER
+      - NOT_FOUND
+      - UNPROCESSABLE_BY_PHONE
+      - DISCONNECTED
+      - NOT_ALL_DATA_POINTS_RETRIEVED
+      - MEMBER_CONSENT_REQUIRED
+      - SLA_EXPIRED
+      - PAYOR_NOT_SUPPORTED
+      - NO_OPERATING_HOURS
+      title: PayorCallCategory
+    AddTargetsRequest:
+      properties:
+        targets:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/TargetInput'
+            type: array
+          - type: 'null'
+          title: Targets
+          description: The list of targets as TargetInputs
+          examples:
+          - - fallback_phone_number: '+19876543210'
+              input_data:
+                appointment_date: '2026-04-01'
+                appointment_type: Follow-up
+              patient:
+                date_of_birth: '1990-01-15'
+                external_id: PAT-001
+                extra_data:
+                  address: 123 Main St, Anytown, USA
+                first_name: John
+                last_name: Doe
+              phone_number: '+1234567890'
+              pre_call_data:
+                patient_name: John Doe
+        launch:
+          type: boolean
+          title: Launch
+          description: Whether to launch the targets immediately or only add them to the campaign
+          default: false
+        allow_duplicates:
+          type: boolean
+          title: Allow Duplicates
+          description: When set to True all targets with and external ID already contained in the campaign will be ignored
+          default: true
+      type: object
+      title: AddTargetsRequest
+    NotFoundSubCategory:
+      type: string
+      enum:
+      - PROVIDER
+      - MEMBER
+      - FACILITY
+      - REQUEST
+      - OTHER
+      title: NotFoundSubCategory
+    Body_receive_ehr_event_step_api_v1_campaigns__campaign_id__ehr_event__friendly_id__post:
+      properties:
+        event_type:
+          $ref: '#/components/schemas/EHREventType'
+          description: The type of EHR event.
+        event_data:
+          additionalProperties: true
+          type: object
+          title: Event Data
+        target_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Target Id
+          description: Optional target ID.
+        external_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: External Id
+          description: Optional external ID.
+      type: object
+      required:
+      - event_type
+      title: Body_receive_ehr_event_step_api_v1_campaigns__campaign_id__ehr_event__friendly_id__post
+    PatientInput:
+      properties:
+        first_name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: First Name
+          description: Patient first name
+        last_name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Last Name
+          description: Patient last name
+        date_of_birth:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Date Of Birth
+          description: Patient date of birth (YYYY-MM-DD)
+        phone_number:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Phone Number
+          description: Patient phone number
+        external_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: External Id
+          description: Patient external ID (e.g. MRN)
+        extra_data:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          title: Extra Data
+          description: Additional patient metadata
+      type: object
+      title: PatientInput
+    RerunFailedWebhooksBody:
+      properties:
+        from_date:
+          type: string
+          format: date-time
+          title: From Date
+          description: Start of the window (webhook event created_at), inclusive.
+        to_date:
+          type: string
+          format: date-time
+          title: To Date
+          description: End of the window (webhook event created_at), inclusive.
+      type: object
+      required:
+      - from_date
+      - to_date
+      title: RerunFailedWebhooksBody
+    TargetInput:
+      properties:
+        id:
+          type: string
+          title: Id
+          description: The ID of the target
+        external_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: External Id
+          description: The external ID of the target
+        phone_number:
+          anyOf:
+          - type: string
+          - $ref: '#/components/schemas/TargetInputPhoneNumber'
+          title: Phone Number
+          description: The phone number of the target
+        fallback_phone_number:
+          anyOf:
+          - type: string
+          - $ref: '#/components/schemas/TargetInputPhoneNumber'
+          - type: 'null'
+          title: Fallback Phone Number
+          description: The fallback phone number of the target
+        input_data:
+          additionalProperties: true
+          type: object
+          title: Input Data
+          description: The input data of the target
+        patient:
+          anyOf:
+          - $ref: '#/components/schemas/PatientInput'
+          - type: 'null'
+          description: Patient to link to this target.
+        pre_call_data:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          title: Pre Call Data
+          description: The pre-call data of the target
+      type: object
+      required:
+      - phone_number
+      title: TargetInput
+    UnprocessableByPhoneSubCategory:
+      type: string
+      enum:
+      - FAX
+      - INSURANCE_PORTAL
+      - AUTOMATED_SYSTEM
+      title: UnprocessableByPhoneSubCategory
+    InputDataIssueSubCategory:
+      type: string
+      enum:
+      - MISSING_INFORMATION
+      - INCORRECT_INFORMATION
+      title: InputDataIssueSubCategory
+    ProviderCallCategory:
+      type: string
+      enum:
+      - GOOD
+      - WRONG_USER
+      - PROVIDER_NO_LONGER_AT_LOCATION
+      - DISCONNECTED
+      - WRONG_PHONE_NUMBER
+      - HUMAN_ONLY
+      - DATA_ISSUE
+      - CALLBACK_REQUESTED
+      - TRANSFER_HANG_UP
+      - UNPROCESSABLE_BY_PHONE
+      - MEMBER_CONSENT_REQUIRED
+      - IVR_LOOP
+      - CLOSED_FOR_HOLIDAYS
+      - NO_RESPONSE
+      - VOICEMAIL
+      - AFTER_HOURS
+      - TRANSFER
+      - TRANSFER_FAILED
+      - BLACKLISTED_PHONE
+      title: ProviderCallCategory
+    LaunchTargetsRequest:
+      properties:
+        target_ids:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          title: Target Ids
+          description: The IDs of the campaign targets to call. If not provided, count must be set.
+        count:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Count
+          description: Number of random pending targets to launch. If not provided, target_ids must be set.
+        prioritize_oldest:
+          type: boolean
+          title: Prioritize Oldest
+          description: Whether to prioritize oldest targets when launching.
+          default: false
+      type: object
+      title: LaunchTargetsRequest
+    TransferSubCategory:
+      type: string
+      enum:
+      - HUMAN_REQUESTED
+      - INTEGRATION_ERROR
+      - INSURANCE_REJECTED
+      - TRANSFER_REQUESTED
+      - NATURAL_TRANSFER
+      title: TransferSubCategory
+    CampaignTargetPatientResolution:
+      type: string
+      enum:
+      - successful
+      - unsuccessful
+      title: CampaignTargetPatientResolution
+    TimeIntervalNoTz:
+      properties:
+        start:
+          type: string
+          title: Start
+        end:
+          type: string
+          title: End
+      type: object
+      required:
+      - start
+      - end
+      title: TimeIntervalNoTz
+    EHREventType:
+      type: string
+      enum:
+      - appointment_created
+      - appointment_cancelled
+      - patient_registered
+      title: EHREventType
+    TargetInputPhoneNumber:
+      properties:
+        value:
+          type: string
+          title: Value
+          description: The phone number of the target
+        operating_hours:
+          anyOf:
+          - $ref: '#/components/schemas/WeekSchedule'
+          - type: 'null'
+          description: The operating hours of the target
+      type: object
+      required:
+      - value
+      title: TargetInputPhoneNumber
+    CampaignTargetStatus:
+      type: string
+      enum:
+      - Pending
+      - Scheduled
+      - In Progress
+      - Post-processing
+      - Finished
+      - To review
+      - Failed
+      - Waiting
+      - SMS Scheduled
+      title: CampaignTargetStatus
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    CampaignTargetResponse:
+      properties:
+        id:
+          type: string
+          title: Id
+        target_url:
+          type: string
+          title: Target Url
+        organization_id:
+          type: string
+          title: Organization Id
+        campaign_id:
+          type: string
+          title: Campaign Id
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+        execution_minutes:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Execution Minutes
+        input_data:
+          additionalProperties: true
+          type: object
+          title: Input Data
+        output_data:
+          additionalProperties: true
+          type: object
+          title: Output Data
+        status:
+          $ref: '#/components/schemas/CampaignTargetStatus'
+        resolution:
+          anyOf:
+          - $ref: '#/components/schemas/CampaignTargetPayorResolution'
+          - $ref: '#/components/schemas/CampaignTargetPatientResolution'
+          - type: 'null'
+          title: Resolution
+        category:
+          anyOf:
+          - $ref: '#/components/schemas/PayorCallCategory'
+          - $ref: '#/components/schemas/PatientCallCategory'
+          - $ref: '#/components/schemas/ProviderCallCategory'
+          - $ref: '#/components/schemas/PatientIncomingCallCategory'
+          - $ref: '#/components/schemas/PatientIncomingSchedulingCallCategory'
+          - type: 'null'
+          title: Category
+        subcategory:
+          anyOf:
+          - $ref: '#/components/schemas/NotFoundSubCategory'
+          - $ref: '#/components/schemas/TransferSubCategory'
+          - $ref: '#/components/schemas/IVRLoopSubCategory'
+          - $ref: '#/components/schemas/ServiceNotAvailableSubCategory'
+          - $ref: '#/components/schemas/UnprocessableByPhoneSubCategory'
+          - $ref: '#/components/schemas/InputDataIssueSubCategory'
+          - $ref: '#/components/schemas/HumanOnlySubcategory'
+          - $ref: '#/components/schemas/PayorCallCategory'
+          - type: string
+          - type: 'null'
+          title: Subcategory
+        call_log_ids:
+          anyOf:
+          - items:
+              type: integer
+            type: array
+          - type: 'null'
+          title: Call Log Ids
+        last_call_date:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Last Call Date
+        phone_number:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Phone Number
+        fax_links:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          title: Fax Links
+        payor_api_data:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          title: Payor Api Data
+        external_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: External Id
+        updated_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Updated At
+        retries:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Retries
+        scheduled_time:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Scheduled Time
+        categorization:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          title: Categorization
+        outcome:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Outcome
+        statistics:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          title: Statistics
+      type: object
+      required:
+      - id
+      - target_url
+      - organization_id
+      - campaign_id
+      - created_at
+      - execution_minutes
+      - input_data
+      - output_data
+      - status
+      - resolution
+      - category
+      - subcategory
+      - call_log_ids
+      - last_call_date
+      - phone_number
+      - fax_links
+      - payor_api_data
+      - external_id
+      title: CampaignTargetResponse
+    ServiceNotAvailableSubCategory:
+      type: string
+      enum:
+      - PHONE_NUMBER_NOT_AVAILABLE
+      - CLOGGED_SERVICE
+      - TECHNICAL_ISSUE
+      - OTHER
+      title: ServiceNotAvailableSubCategory
+    PaginatedCampaignTargetsResponse:
+      properties:
+        targets:
+          items:
+            $ref: '#/components/schemas/CampaignTargetResponse'
+          type: array
+          title: Targets
+        page_count:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Page Count
+        next_page:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Next Page
+      type: object
+      required:
+      - targets
+      title: PaginatedCampaignTargetsResponse
