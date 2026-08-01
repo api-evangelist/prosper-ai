@@ -1,0 +1,28 @@
+generated: '2026-07-20'
+method: derived
+source: >-
+  openapi/prosper-ai-voice-openapi.json +
+  https://docs.getprosperapp.com/api-reference/status/health-check
+versioning:
+  scheme: uri-path
+  current: v1
+  spec_version: 1.0.0
+  docs: https://docs.getprosperapp.com/introduction
+health_check:
+  operation: health_check_api_v1_health_get
+  path: /api/v1/health
+  note: Public health-check endpoint for monitoring service status.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: No deprecation policy or Sunset/Deprecation header support documented.
+sla:
+  url: null
+  uptime_target: null
+status_page: null
+deprecated_operations: []
+note: >-
+  No public status page, deprecation policy, or SLA was found. The only
+  lifecycle-relevant signals are the single API version (v1 / spec 1.0.0) and a
+  monitoring health-check endpoint. StatusPage and Deprecation pointers are
+  intentionally NOT emitted (nothing published to ground them).

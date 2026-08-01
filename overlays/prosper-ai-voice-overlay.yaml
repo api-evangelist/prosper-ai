@@ -1,0 +1,27 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Prosper Voice API
+  version: 1.0.0
+extends: openapi/prosper-ai-voice-openapi.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: prosper-ai
+    x-apievangelist-reviewed: '2026-07-20'
+    x-apievangelist-notes: >-
+      Published spec declares no servers[] and no securitySchemes. The production
+      host is https://voice.getprosperapp.com and the REST API authenticates with
+      an API key issued from the Prosper platform; a hosted OAuth-protected MCP
+      server is available at /mcp.
+- target: $.servers
+  update:
+  - url: https://voice.getprosperapp.com
+    description: Production (added by API Evangelist; absent from the published spec)
+- target: $.tags
+  update:
+  - name: Status
+  - name: Campaigns
+  - name: Call Logs
+  - name: Live Calls
+  - name: Targets
+  - name: API Keys

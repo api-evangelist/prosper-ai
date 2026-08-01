@@ -1,0 +1,64 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/prosper-ai-voice-openapi.json
+note: >-
+  Entity-relationship graph derived from the Prosper Voice OpenAPI paths, schemas
+  and id-reference fields (campaign_id, target_id, call_log_id). Relationships are
+  inferred from path structure and request/response schemas.
+entities:
+- name: Campaign
+  id: campaign_id
+  id_type: string
+  description: A calling campaign that groups targets and drives outbound/inbound voice work.
+  operations: [campaign_calls, add_targets, delete_targets, get_campaign_targets, get_required_variables, get_patient_campaign_targets, rerun_failed_webhooks, receive_webhook_step, receive_ehr_event_step]
+- name: Target
+  id: target_id
+  id_type: uuid
+  description: A single contact/record within a campaign that a call is placed for or received from.
+  schemas: [TargetInput, CampaignTargetResponse, CampaignTargetPatientResponse, TargetInputPhoneNumber]
+  operations: [retrieve_target, update_target_input_data]
+- name: CallLog
+  id: call_log_id
+  id_type: integer
+  description: A completed call record with transcript, metadata, QA results and outcome.
+  schemas: [CallLogExportInformation, CallLogListExportInformation, CallLogExportPaginated]
+  operations: [list_call_logs, get_call_log]
+- name: LiveCall
+  id: call_log_id
+  description: A flat snapshot of an in-progress call.
+  operations: [get_live_call]
+- name: Patient
+  description: Patient party resolved for a campaign target.
+  schemas: [PatientInput, CampaignTargetPatientResolution]
+- name: Payor
+  description: Insurance payor party resolved for a campaign target.
+  schemas: [CampaignTargetPayorResolution]
+- name: ApiKey
+  id: api_key_id
+  description: An API key issued to the organization.
+  operations: [delete_api_key]
+relationships:
+- from: Target
+  to: Campaign
+  type: belongs_to
+  via: campaign_id
+- from: Campaign
+  to: Target
+  type: has_many
+  via: campaign_id
+- from: CallLog
+  to: Target
+  type: belongs_to
+  via: target_id
+- from: Target
+  to: Patient
+  type: has_one
+  via: patient resolution
+- from: Target
+  to: Payor
+  type: has_one
+  via: payor resolution
+- from: LiveCall
+  to: CallLog
+  type: belongs_to
+  via: call_log_id

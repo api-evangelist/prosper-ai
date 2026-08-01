@@ -1,0 +1,39 @@
+generated: '2026-07-20'
+method: searched
+source: >-
+  https://docs.getprosperapp.com/introduction +
+  https://voice.getprosperapp.com/.well-known/oauth-authorization-server
+docs: https://docs.getprosperapp.com/introduction
+summary:
+  types: [apiKey, oauth2]
+  api_key_in: [header]
+  oauth2_flows: [authorizationCode]
+  note: >-
+    The REST API (voice.getprosperapp.com/api/v1) authenticates with an API key
+    issued from the Prosper platform (API Keys section). The published OpenAPI
+    declares `security: []` and no securitySchemes, so the key mechanism is
+    documented in prose rather than the spec. The hosted MCP server at /mcp
+    authenticates with OAuth 2.0 (authorization code + PKCE, refresh tokens,
+    Dynamic Client Registration).
+schemes:
+- name: ApiKey
+  type: apiKey
+  in: header
+  applies_to: REST API (/api/v1)
+  description: >-
+    API key created in the Prosper platform's API Keys section. Presented on each
+    request. The exact header name is not published in the OpenAPI spec.
+  source: https://docs.getprosperapp.com/introduction
+- name: MCP OAuth2
+  type: oauth2
+  applies_to: MCP server (/mcp)
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://voice.getprosperapp.com/mcp/authorize
+    tokenUrl: https://voice.getprosperapp.com/mcp/token
+    registrationUrl: https://voice.getprosperapp.com/mcp/register
+    revocationUrl: https://voice.getprosperapp.com/mcp/revoke
+    pkce: S256
+    scopes:
+      read: Read access to Prosper resources via MCP
+  source: https://voice.getprosperapp.com/.well-known/oauth-authorization-server

@@ -1,0 +1,19 @@
+generated: '2026-07-20'
+method: generated
+source: openapi/prosper-ai-voice-openapi.json
+skills:
+- file: prosper-ai-launch-campaign-calls.md
+  name: Add targets and launch calls in a Prosper campaign
+  api: openapi/prosper-ai-voice-openapi.json
+  operations:
+  - get_required_variables_api_v1_campaigns__campaign_id__variables_get
+  - add_targets_api_v1_campaigns__campaign_id__targets_post
+  - campaign_calls_api_v1_campaigns__campaign_id__calls_post
+  - get_campaign_targets_api_v1_campaigns__campaign_id__targets_get
+- file: prosper-ai-export-call-data.md
+  name: Export call logs and outcomes from a Prosper campaign
+  api: openapi/prosper-ai-voice-openapi.json
+  operations:
+  - list_call_logs_api_v1_call_logs_get
+  - get_call_log_api_v1_call_logs__call_log_id__get
+  - get_live_call_api_v1_live_calls_get

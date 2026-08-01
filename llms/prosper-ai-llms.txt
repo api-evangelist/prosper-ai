@@ -1,0 +1,26 @@
+# Prosper AI
+
+## Docs
+
+- [Delete Api Key](https://docs.getprosperapp.com/api-reference/api-keys/delete-api-key.md)
+- [Get Call Log](https://docs.getprosperapp.com/api-reference/call-logs/get-call-log.md): Get detailed information for a specific call log.
+- [List Call Logs](https://docs.getprosperapp.com/api-reference/call-logs/list-call-logs.md): List all call logs for the organization with pagination and date filtering.
+- [Add Targets](https://docs.getprosperapp.com/api-reference/campaigns/add-targets.md): Add targets to a campaign
+- [Campaign Calls](https://docs.getprosperapp.com/api-reference/campaigns/campaign-calls.md)
+- [Delete Targets](https://docs.getprosperapp.com/api-reference/campaigns/delete-targets.md): Delete targets from a campaign
+- [Get Campaign Targets](https://docs.getprosperapp.com/api-reference/campaigns/get-campaign-targets.md)
+- [Get Patient Campaign Targets](https://docs.getprosperapp.com/api-reference/campaigns/get-patient-campaign-targets.md)
+- [Get Required Variables](https://docs.getprosperapp.com/api-reference/campaigns/get-required-variables.md): If successful returns a json with the needed variables for the campaign.
+- [Receive Ehr Event Step](https://docs.getprosperapp.com/api-reference/campaigns/receive-ehr-event-step.md)
+- [Receive Webhook Step](https://docs.getprosperapp.com/api-reference/campaigns/receive-webhook-step.md)
+- [Get Live Call](https://docs.getprosperapp.com/api-reference/live-calls/get-live-call.md): Return a flat snapshot of a call by one of:
+- [Health Check](https://docs.getprosperapp.com/api-reference/status/health-check.md): Health check endpoint for monitoring service status.
+- [Retrieve Target](https://docs.getprosperapp.com/api-reference/targets/retrieve-target.md)
+- [Introduction](https://docs.getprosperapp.com/introduction.md): Welcome to the Prosper AI Voice Agents.
+- [Executing Calls within a Campaign](https://docs.getprosperapp.com/quickstart/campaign-call.md): Learn how to execute phone calls within a campaign using the Prosper API.
+- [Export Data from Campaigns](https://docs.getprosperapp.com/quickstart/export-data.md): Learn how to export and retrieve call data from campaigns using the Prosper API.
+
+## OpenAPI Specs
+
+- [openapi](https://voice.getprosperapp.com/openapi.json)
+- [openapi-from-anchor-url-0](https://docs.getprosperapp.com/openapi-from-anchor-url-0)

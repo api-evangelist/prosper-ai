@@ -1,7 +1,31 @@
 aid: prosper-ai
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/prosper-ai.png
 name: Prosper AI
-description: Prosper AI is a company surfaced as a portfolio company of a16z and added to the API Evangelist
-  network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Prosper AI is an AI-native voice automation platform for healthcare operations,
+  founded in 2023 and backed by Andreessen Horowitz (a16z), Emergence Capital,
+  Base10, Company Ventures and Y Combinator. Prosper runs the voice-heavy work of
+  clinic and revenue-cycle operations end-to-end: answering and placing patient
+  phone calls, appointment scheduling directly into the EHR, insurance eligibility
+  and benefits verification, prior authorization, and patient billing follow-up.
+  The platform integrates with 80+ EHR, practice-management and clearinghouse
+  systems (Epic, athenahealth, Cerner, MEDITECH, NextGen, Nextech, Allscripts/Altera,
+  Availity, Healthie). Prosper exposes a public REST API (Prosper Voice, /api/v1)
+  for driving campaigns, targets, live calls and call-log export, plus a hosted,
+  OAuth-protected Model Context Protocol (MCP) server for agent access. Prosper is
+  HIPAA compliant and SOC 2 Type II attested and signs Business Associate Agreements.
 url: https://raw.githubusercontent.com/api-evangelist/prosper-ai/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -11,12 +35,243 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 18
+  pass: local-v1
 tags:
 - Company
-apis: []
+- Healthcare
+- Voice AI
+- Revenue Cycle Management
+- Patient Access
+- EHR Integration
+- AI Agents
+- MCP
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+apis:
+- aid: prosper-ai:prosper-ai-api-keys-api
+  name: Prosper AI API Keys API
+  description: The API Keys API from Prosper AI — 1 operation(s) for api keys.
+  humanURL: https://docs.getprosperapp.com/introduction
+  baseURL: https://voice.getprosperapp.com
+  tags:
+  - API Keys
+  properties:
+  - type: OpenAPI
+    url: openapi/prosper-ai-api-keys-api-openapi.yml
+  - type: Documentation
+    url: https://docs.getprosperapp.com/introduction
+  - type: APIReference
+    url: https://docs.getprosperapp.com/api-reference/call-logs/list-call-logs
+  - type: Quickstart
+    url: https://docs.getprosperapp.com/quickstart/campaign-call
+  - type: Authentication
+    url: authentication/prosper-ai-authentication.yml
+  - type: OAuthScopes
+    url: scopes/prosper-ai-scopes.yml
+  - type: Conventions
+    url: conventions/prosper-ai-conventions.yml
+  - type: ErrorCatalog
+    url: errors/prosper-ai-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/prosper-ai-lifecycle.yml
+  - type: DataModel
+    url: data-model/prosper-ai-data-model.yml
+  - type: Conformance
+    url: conformance/prosper-ai-conformance.yml
+- aid: prosper-ai:prosper-ai-call-logs-api
+  name: Prosper AI Call Logs API
+  description: The Call Logs API from Prosper AI — 2 operation(s) for call logs.
+  humanURL: https://docs.getprosperapp.com/introduction
+  baseURL: https://voice.getprosperapp.com
+  tags:
+  - Call Logs
+  properties:
+  - type: OpenAPI
+    url: openapi/prosper-ai-call-logs-api-openapi.yml
+  - type: Documentation
+    url: https://docs.getprosperapp.com/introduction
+  - type: APIReference
+    url: https://docs.getprosperapp.com/api-reference/call-logs/list-call-logs
+  - type: Quickstart
+    url: https://docs.getprosperapp.com/quickstart/campaign-call
+  - type: Authentication
+    url: authentication/prosper-ai-authentication.yml
+  - type: OAuthScopes
+    url: scopes/prosper-ai-scopes.yml
+  - type: Conventions
+    url: conventions/prosper-ai-conventions.yml
+  - type: ErrorCatalog
+    url: errors/prosper-ai-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/prosper-ai-lifecycle.yml
+  - type: DataModel
+    url: data-model/prosper-ai-data-model.yml
+  - type: Conformance
+    url: conformance/prosper-ai-conformance.yml
+- aid: prosper-ai:prosper-ai-campaigns-api
+  name: Prosper AI Campaigns API
+  description: The Campaigns API from Prosper AI — 7 operation(s) for campaigns.
+  humanURL: https://docs.getprosperapp.com/introduction
+  baseURL: https://voice.getprosperapp.com
+  tags:
+  - Campaigns
+  properties:
+  - type: OpenAPI
+    url: openapi/prosper-ai-campaigns-api-openapi.yml
+  - type: Documentation
+    url: https://docs.getprosperapp.com/introduction
+  - type: APIReference
+    url: https://docs.getprosperapp.com/api-reference/call-logs/list-call-logs
+  - type: Quickstart
+    url: https://docs.getprosperapp.com/quickstart/campaign-call
+  - type: Authentication
+    url: authentication/prosper-ai-authentication.yml
+  - type: OAuthScopes
+    url: scopes/prosper-ai-scopes.yml
+  - type: Conventions
+    url: conventions/prosper-ai-conventions.yml
+  - type: ErrorCatalog
+    url: errors/prosper-ai-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/prosper-ai-lifecycle.yml
+  - type: DataModel
+    url: data-model/prosper-ai-data-model.yml
+  - type: Conformance
+    url: conformance/prosper-ai-conformance.yml
+- aid: prosper-ai:prosper-ai-live-calls-api
+  name: Prosper AI Live Calls API
+  description: The Live Calls API from Prosper AI — 1 operation(s) for live calls.
+  humanURL: https://docs.getprosperapp.com/introduction
+  baseURL: https://voice.getprosperapp.com
+  tags:
+  - Live Calls
+  properties:
+  - type: OpenAPI
+    url: openapi/prosper-ai-live-calls-api-openapi.yml
+  - type: Documentation
+    url: https://docs.getprosperapp.com/introduction
+  - type: APIReference
+    url: https://docs.getprosperapp.com/api-reference/call-logs/list-call-logs
+  - type: Quickstart
+    url: https://docs.getprosperapp.com/quickstart/campaign-call
+  - type: Authentication
+    url: authentication/prosper-ai-authentication.yml
+  - type: OAuthScopes
+    url: scopes/prosper-ai-scopes.yml
+  - type: Conventions
+    url: conventions/prosper-ai-conventions.yml
+  - type: ErrorCatalog
+    url: errors/prosper-ai-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/prosper-ai-lifecycle.yml
+  - type: DataModel
+    url: data-model/prosper-ai-data-model.yml
+  - type: Conformance
+    url: conformance/prosper-ai-conformance.yml
+- aid: prosper-ai:prosper-ai-status-api
+  name: Prosper AI Status API
+  description: The Status API from Prosper AI — 1 operation(s) for status.
+  humanURL: https://docs.getprosperapp.com/introduction
+  baseURL: https://voice.getprosperapp.com
+  tags:
+  - Status
+  properties:
+  - type: OpenAPI
+    url: openapi/prosper-ai-status-api-openapi.yml
+  - type: Documentation
+    url: https://docs.getprosperapp.com/introduction
+  - type: APIReference
+    url: https://docs.getprosperapp.com/api-reference/call-logs/list-call-logs
+  - type: Quickstart
+    url: https://docs.getprosperapp.com/quickstart/campaign-call
+  - type: Authentication
+    url: authentication/prosper-ai-authentication.yml
+  - type: OAuthScopes
+    url: scopes/prosper-ai-scopes.yml
+  - type: Conventions
+    url: conventions/prosper-ai-conventions.yml
+  - type: ErrorCatalog
+    url: errors/prosper-ai-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/prosper-ai-lifecycle.yml
+  - type: DataModel
+    url: data-model/prosper-ai-data-model.yml
+  - type: Conformance
+    url: conformance/prosper-ai-conformance.yml
+- aid: prosper-ai:prosper-ai-targets-api
+  name: Prosper AI Targets API
+  description: The Targets API from Prosper AI — 1 operation(s) for targets.
+  humanURL: https://docs.getprosperapp.com/introduction
+  baseURL: https://voice.getprosperapp.com
+  tags:
+  - Targets
+  properties:
+  - type: OpenAPI
+    url: openapi/prosper-ai-targets-api-openapi.yml
+  - type: Documentation
+    url: https://docs.getprosperapp.com/introduction
+  - type: APIReference
+    url: https://docs.getprosperapp.com/api-reference/call-logs/list-call-logs
+  - type: Quickstart
+    url: https://docs.getprosperapp.com/quickstart/campaign-call
+  - type: Authentication
+    url: authentication/prosper-ai-authentication.yml
+  - type: OAuthScopes
+    url: scopes/prosper-ai-scopes.yml
+  - type: Conventions
+    url: conventions/prosper-ai-conventions.yml
+  - type: ErrorCatalog
+    url: errors/prosper-ai-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/prosper-ai-lifecycle.yml
+  - type: DataModel
+    url: data-model/prosper-ai-data-model.yml
+  - type: Conformance
+    url: conformance/prosper-ai-conformance.yml
+common:
+- type: DomainSecurity
+  url: security/prosper-ai-domain-security.yml
+- type: DeveloperPortal
+  url: https://platform.getprosperapp.com/
+- type: Documentation
+  url: https://docs.getprosperapp.com/introduction
+- type: APIReference
+  url: https://docs.getprosperapp.com/api-reference/call-logs/list-call-logs
+- type: GettingStarted
+  url: https://docs.getprosperapp.com/quickstart/campaign-call
+- type: MCPServer
+  url: mcp/prosper-ai-mcp.yml
+- type: LLMsTxt
+  url: llms/prosper-ai-llms.txt
+- type: WellKnown
+  url: well-known/prosper-ai-well-known.yml
+- type: Authentication
+  url: authentication/prosper-ai-authentication.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Compliance
+  url: conformance/prosper-ai-conformance.yml
+- type: SignUp
+  url: https://www.getprosper.ai/get-started
+- type: Login
+  url: https://platform.getprosperapp.com/
+- type: TermsOfService
+  url: https://www.getprosper.ai/terms-of-service
+- type: PrivacyPolicy
+  url: https://www.getprosper.ai/privacy-policy
+- type: Blog
+  url: https://www.getprosper.ai/blog
+- type: HelpCenter
+  url: https://www.getprosper.ai/faq
+- type: Integrations
+  url: https://www.getprosper.ai/integrations
+- type: LinkedIn
+  url: https://www.linkedin.com/company/prospertechnologies

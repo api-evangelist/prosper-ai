@@ -1,0 +1,20 @@
+generated: '2026-07-20'
+method: searched
+source: https://voice.getprosperapp.com/.well-known/oauth-authorization-server
+docs: https://voice.getprosperapp.com/.well-known/oauth-authorization-server
+note: >-
+  OAuth scopes here belong to the hosted MCP OAuth server (issuer
+  https://voice.getprosperapp.com/mcp). The REST API uses API-key auth and
+  declares no OAuth scopes in its OpenAPI.
+schemes:
+- name: MCP OAuth2
+  source: https://voice.getprosperapp.com/.well-known/oauth-authorization-server
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://voice.getprosperapp.com/mcp/authorize
+    tokenUrl: https://voice.getprosperapp.com/mcp/token
+scopes:
+- scope: read
+  description: Read access to Prosper resources exposed through the MCP server
+  flows: [authorizationCode]
+  sources: [https://voice.getprosperapp.com/.well-known/oauth-authorization-server]

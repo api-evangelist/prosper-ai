@@ -1,0 +1,24 @@
+{
+  "provider": "prosper-ai",
+  "sources": [
+    "prosper-ai-api-keys-api-openapi.yml",
+    "prosper-ai-call-logs-api-openapi.yml",
+    "prosper-ai-campaigns-api-openapi.yml",
+    "prosper-ai-live-calls-api-openapi.yml",
+    "prosper-ai-status-api-openapi.yml",
+    "prosper-ai-targets-api-openapi.yml"
+  ],
+  "outputs": [
+    "prosper-ai-api-keys-api-openapi.yml",
+    "prosper-ai-call-logs-api-openapi.yml",
+    "prosper-ai-campaigns-api-openapi.yml",
+    "prosper-ai-live-calls-api-openapi.yml",
+    "prosper-ai-status-api-openapi.yml",
+    "prosper-ai-targets-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

@@ -1,0 +1,50 @@
+generated: '2026-07-20'
+method: searched
+source: >-
+  openapi/prosper-ai-voice-openapi.json +
+  https://voice.getprosperapp.com/.well-known/oauth-authorization-server +
+  https://www.getprosper.ai/company
+standards:
+- id: oauth2
+  conforms: true
+  evidence: >-
+    Hosted MCP server publishes RFC 8414 authorization-server metadata
+    (authorization_code + refresh_token grants, PKCE S256).
+- id: rfc8414-oauth-metadata
+  conforms: true
+  evidence: /.well-known/oauth-authorization-server returns 200 with valid metadata
+- id: rfc9728-protected-resource-metadata
+  conforms: true
+  evidence: /.well-known/oauth-protected-resource returns 200 with valid metadata
+- id: pkce-rfc7636
+  conforms: true
+  evidence: code_challenge_methods_supported includes S256
+- id: mcp
+  conforms: true
+  evidence: Live Model Context Protocol server at https://voice.getprosperapp.com/mcp
+- id: openapi-3.1
+  conforms: true
+  evidence: Published OpenAPI 3.1.0 document at https://voice.getprosperapp.com/openapi.json
+- id: hipaa
+  conforms: true
+  evidence: >-
+    Publicly claims HIPAA compliance and signs Business Associate Agreements
+    (getprosper.ai). PHI encrypted in transit and at rest.
+- id: soc2-type-ii
+  conforms: true
+  evidence: Publicly claims SOC 2 Type II attestation (getprosper.ai).
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: 422 errors use application/json (FastAPI HTTPValidationError), not application/problem+json.
+- id: fhir
+  conforms: false
+  evidence: No FHIR resource shapes in the OpenAPI (integrates with EHRs but does not expose FHIR here).
+- id: oidc
+  conforms: false
+  evidence: No /.well-known/openid-configuration published.
+compliance_program:
+  published: true
+  certifications: [HIPAA, SOC 2 Type II]
+  business_associate_agreement: true
+  data_retention: 0-day retention agreement with model provider (per public statements)
+  reference: https://www.getprosper.ai/company

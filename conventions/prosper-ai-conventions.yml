@@ -1,0 +1,52 @@
+generated: '2026-07-20'
+method: derived
+source: >-
+  openapi/prosper-ai-voice-openapi.json +
+  https://docs.getprosperapp.com/quickstart/export-data
+note: >-
+  Cross-cutting request/response semantics for the Prosper Voice REST API,
+  derived from the OpenAPI and the export-data quickstart. Cross-links:
+  authentication/prosper-ai-authentication.yml, errors/prosper-ai-problem-types.yml,
+  lifecycle/prosper-ai-lifecycle.yml.
+authentication:
+  style: api-key (header) for REST; OAuth2 for the MCP server
+  ref: authentication/prosper-ai-authentication.yml
+versioning:
+  style: uri-path
+  current: v1
+  base_path: /api/v1
+pagination:
+  style: page-number
+  params:
+    page: Page number (default 1)
+    limit: Results per page (OpenAPI param name; docs quickstart refers to it as page_size, default 20, max 100)
+  response_fields:
+    items: array of results
+    total: total matching records
+    page: current page number
+    page_size: page size
+  applies_to:
+  - list_call_logs_api_v1_call_logs_get
+  - get_campaign_targets_api_v1_campaigns__campaign_id__targets_get
+  - get_patient_campaign_targets_api_v1_campaigns__campaign_id__patient_targets_get
+filtering:
+  date_range: from_date / to_date query params on list endpoints
+  status: status query param on campaign targets and call logs
+idempotency:
+  supported: false
+  note: No Idempotency-Key header or idempotency contract is documented or present in the OpenAPI.
+request_tracing:
+  request_id_header: null
+  note: No request-id/correlation header documented.
+error_envelope:
+  content_type: application/json
+  shape: '{"detail":[{"loc":[...],"msg":"...","type":"..."}]}'
+  ref: errors/prosper-ai-problem-types.yml
+rate_limiting:
+  signaled: unknown
+  note: No rate-limit headers or policy documented in the OpenAPI or quickstart pages.
+webhooks_inbound:
+  note: >-
+    The API exposes endpoints to RECEIVE inbound webhook/EHR event steps into a
+    campaign (receive_webhook_step, receive_ehr_event_step) and to rerun failed
+    webhooks. No outbound event catalog / AsyncAPI is published.

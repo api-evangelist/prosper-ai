@@ -1,0 +1,48 @@
+generated: '2026-07-20'
+method: searched
+status: published
+source: >-
+  https://voice.getprosperapp.com/.well-known/oauth-protected-resource +
+  https://voice.getprosperapp.com/.well-known/oauth-authorization-server
+server:
+  name: prosper-voice-mcp
+  transport: http
+  url: https://voice.getprosperapp.com/mcp
+  auth:
+    type: oauth2
+    protected_resource: https://voice.getprosperapp.com/mcp
+    authorization_server: https://voice.getprosperapp.com/mcp
+    authorization_endpoint: https://voice.getprosperapp.com/mcp/authorize
+    token_endpoint: https://voice.getprosperapp.com/mcp/token
+    registration_endpoint: https://voice.getprosperapp.com/mcp/register
+    revocation_endpoint: https://voice.getprosperapp.com/mcp/revoke
+    grant_types_supported: [authorization_code, refresh_token]
+    scopes_supported: [read]
+    code_challenge_methods_supported: [S256]
+    bearer_methods_supported: [header]
+notes: >-
+  Prosper hosts a live, OAuth-protected Model Context Protocol server at
+  /mcp on the API host. The endpoint is reachable (HTTP 401 invalid_token
+  without a bearer token; supports Dynamic Client Registration via the
+  /mcp/register endpoint). The specific tool list is only exposed after
+  authentication, so it is not enumerated here. Candidate tools below are
+  DERIVED from the public REST OpenAPI operations for reference only.
+tools_candidate:
+- name: list_call_logs
+  description: List all call logs for the organization with pagination and date filtering
+  source_operation: openapi/prosper-ai-voice-openapi.json#list_call_logs_api_v1_call_logs_get
+- name: get_call_log
+  description: Get detailed information for a specific call log
+  source_operation: openapi/prosper-ai-voice-openapi.json#get_call_log_api_v1_call_logs__call_log_id__get
+- name: get_live_call
+  description: Return a flat snapshot of an in-progress call
+  source_operation: openapi/prosper-ai-voice-openapi.json#get_live_call_api_v1_live_calls_get
+- name: campaign_calls
+  description: Execute phone calls within a campaign
+  source_operation: openapi/prosper-ai-voice-openapi.json#campaign_calls_api_v1_campaigns__campaign_id__calls_post
+- name: add_targets
+  description: Add targets to a campaign
+  source_operation: openapi/prosper-ai-voice-openapi.json#add_targets_api_v1_campaigns__campaign_id__targets_post
+- name: retrieve_target
+  description: Retrieve a target
+  source_operation: openapi/prosper-ai-voice-openapi.json#retrieve_target_api_v1_targets__target_id__get

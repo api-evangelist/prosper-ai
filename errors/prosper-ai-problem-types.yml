@@ -1,0 +1,52 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/prosper-ai-voice-openapi.json
+format: fastapi-validation
+note: >-
+  The Prosper Voice API is a FastAPI service. Documented error responses are 422
+  Unprocessable Entity (request validation) carrying a HTTPValidationError body,
+  and 202 Accepted for the async webhook-rerun operation. Responses use
+  application/json, NOT application/problem+json (RFC 9457 is not implemented).
+  The envelope for 422 is a `detail[]` array of ValidationError objects
+  ({loc[], msg, type}).
+envelope:
+  content_type: application/json
+  schema: HTTPValidationError
+  fields:
+    detail: 'array of ValidationError objects, each with loc (array), msg (string), type (string)'
+problems:
+- status: 422
+  title: Validation Error
+  schema: HTTPValidationError
+  description: >-
+    Request failed schema/parameter validation. Body is
+    {"detail":[{"loc":[...],"msg":"...","type":"..."}]}.
+  applies_to_operations:
+  - campaign_calls_api_v1_campaigns__campaign_id__calls_post
+  - add_targets_api_v1_campaigns__campaign_id__targets_post
+  - delete_targets_api_v1_campaigns__campaign_id__targets_delete
+  - get_campaign_targets_api_v1_campaigns__campaign_id__targets_get
+  - get_required_variables_api_v1_campaigns__campaign_id__variables_get
+  - receive_webhook_step_api_v1_campaigns__campaign_id__targets__target_id__step__friendly_id__post
+  - receive_ehr_event_step_api_v1_campaigns__campaign_id__ehr_event__friendly_id__post
+  - rerun_failed_webhooks_api_v1_campaigns__campaign_id__webhooks_rerun_failed_post
+  - get_patient_campaign_targets_api_v1_campaigns__campaign_id__patient_targets_get
+  - list_call_logs_api_v1_call_logs_get
+  - get_call_log_api_v1_call_logs__call_log_id__get
+  - get_live_call_api_v1_live_calls_get
+  - retrieve_target_api_v1_targets__target_id__get
+  - update_target_input_data_api_v1_targets__target_id__patch
+  - delete_api_key_api_v1_api_keys__api_key_id__delete
+domain_status_subcategories:
+  note: >-
+    The API also models call-outcome categorization (not HTTP errors) via a rich
+    set of subcategory enums in components.schemas, useful for classifying why a
+    voice call did not complete.
+  enums:
+  - HumanOnlySubcategory
+  - IVRLoopSubCategory
+  - InputDataIssueSubCategory
+  - NotFoundSubCategory
+  - ServiceNotAvailableSubCategory
+  - TransferSubCategory
+  - UnprocessableByPhoneSubCategory
