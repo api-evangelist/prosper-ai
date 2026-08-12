@@ -237,6 +237,8 @@ apis:
   - type: Conformance
     url: conformance/prosper-ai-conformance.yml
 common:
+- type: Overlay
+  url: overlays/prosper-ai-voice-overlay.yaml
 - type: DomainSecurity
   url: security/prosper-ai-domain-security.yml
 - type: DeveloperPortal
