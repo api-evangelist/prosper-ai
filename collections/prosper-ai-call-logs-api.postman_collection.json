@@ -1,0 +1,371 @@
+{
+  "item": [
+    {
+      "id": "df0e0434-d60b-4121-bbe7-317ba9030bd2",
+      "name": "Call Logs",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9c38bfb2-8d69-4acc-90cb-c21f356c873b",
+          "name": "List Call Logs",
+          "request": {
+            "name": "List Call Logs",
+            "description": {
+              "content": "List all call logs for the organization with pagination and date filtering.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "call-logs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "The page number to get."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "200",
+                  "description": "The number of call logs per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "from_date",
+                  "value": "<dateTime>",
+                  "description": "Filter logs from this date."
+                },
+                {
+                  "disabled": false,
+                  "key": "to_date",
+                  "value": "<dateTime>",
+                  "description": "Filter logs until this date."
+                },
+                {
+                  "disabled": false,
+                  "key": "campaign_id",
+                  "value": "<string>",
+                  "description": "Filter logs by campaign ID."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9a86646b-1070-4bae-9e36-8ec17118affb",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "call-logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "200"
+                    },
+                    {
+                      "key": "from_date",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "to_date",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "campaign_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"call_logs\": [\n    {\n      \"id\": \"string\",\n      \"to\": \"string\",\n      \"from_\": \"string\",\n      \"created_at\": \"1958-01-26T14:27:25.122Z\",\n      \"call_length\": \"string\",\n      \"call_ended_reason\": \"string\",\n      \"call_categorization\": {\n        \"key_0\": 5605.152444631066,\n        \"key_1\": false,\n        \"key_2\": 8358\n      },\n      \"agent_data\": {\n        \"key_0\": \"string\"\n      },\n      \"campaign_target_id\": \"string\",\n      \"post_call_data\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"qa\": {\n        \"key_0\": 1490.282211116828\n      },\n      \"transcripts\": [\n        {\n          \"key_0\": \"string\"\n        },\n        {\n          \"key_0\": \"string\"\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"to\": \"string\",\n      \"from_\": \"string\",\n      \"created_at\": \"1966-02-14T20:37:54.125Z\",\n      \"call_length\": \"string\",\n      \"call_ended_reason\": \"string\",\n      \"call_categorization\": {\n        \"key_0\": 8403,\n        \"key_1\": 8406.79174191008\n      },\n      \"agent_data\": {\n        \"key_0\": 9202.183985052361,\n        \"key_1\": 5406,\n        \"key_2\": 3438.0092432224164\n      },\n      \"campaign_target_id\": \"string\",\n      \"post_call_data\": {\n        \"key_0\": true\n      },\n      \"qa\": {\n        \"key_0\": 5102\n      },\n      \"transcripts\": [\n        {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\",\n          \"key_2\": \"string\"\n        },\n        {\n          \"key_0\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"page_count\": 2134,\n  \"next_page\": 5553\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "17d2744c-49e2-4cc1-a990-5180b63b4f8e",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "call-logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "200"
+                    },
+                    {
+                      "key": "from_date",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "to_date",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "campaign_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "82542fbd-db3d-42ab-9b5c-e19886d3a985",
+          "name": "Get Call Log",
+          "request": {
+            "name": "Get Call Log",
+            "description": {
+              "content": "Get detailed information for a specific call log.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "call-logs",
+                ":call_log_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "include_recordings",
+                  "value": "false",
+                  "description": "Whether to include recordings."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "call_log_id",
+                  "description": "(Required) The ID of the call log to get the information."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "512740e8-08a2-48b8-936e-ab4025620917",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "call-logs",
+                    ":call_log_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_recordings",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "call_log_id",
+                      "description": "(Required) The ID of the call log to get the information."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"to\": \"string\",\n  \"from_\": \"string\",\n  \"created_at\": \"1951-06-11T06:57:05.860Z\",\n  \"call_length\": \"string\",\n  \"call_ended_reason\": \"string\",\n  \"call_categorization\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  },\n  \"recording_urls\": [\n    \"string\",\n    \"string\"\n  ],\n  \"agent_data\": {\n    \"key_0\": false\n  },\n  \"campaign_target_id\": \"string\",\n  \"post_call_data\": {\n    \"key_0\": 1426,\n    \"key_1\": true\n  },\n  \"qa\": {\n    \"key_0\": 8442,\n    \"key_1\": 3941.089057934014,\n    \"key_2\": 1888.6617600187328\n  },\n  \"transcripts\": [\n    {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\",\n      \"key_2\": \"string\"\n    },\n    {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\",\n      \"key_2\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "817c960d-ede5-4d1b-bbe1-dced3ab72ded",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "call-logs",
+                    ":call_log_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_recordings",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "call_log_id",
+                      "description": "(Required) The ID of the call log to get the information."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "3765d7ad-1c4b-4fd0-a577-20be738f7464",
+    "name": "Prosper Voice API Keys Call Logs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,331 @@
+{
+  "item": [
+    {
+      "id": "61af73a3-04ff-4b4c-ad0e-2a72292ccfa7",
+      "name": "Targets",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7b9fe7f3-4cea-4d70-9c43-bec44cd90f9e",
+          "name": "Retrieve Target",
+          "request": {
+            "name": "Retrieve Target",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "targets",
+                ":target_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "target_id",
+                  "description": "(Required) The ID of the target to get the required variables from."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "664380f1-29c2-41ad-8804-3347b27b0e53",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "targets",
+                    ":target_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "target_id",
+                      "description": "(Required) The ID of the target to get the required variables from."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"target_url\": \"string\",\n  \"organization_id\": \"string\",\n  \"campaign_id\": \"string\",\n  \"created_at\": \"1995-03-07T06:46:14.985Z\",\n  \"execution_minutes\": 6182,\n  \"input_data\": {\n    \"key_0\": 8748.337727172258\n  },\n  \"output_data\": {\n    \"key_0\": \"string\"\n  },\n  \"status\": \"Post-processing\",\n  \"resolution\": \"retrieved\",\n  \"category\": \"MEMBER_CONSENT_REQUIRED\",\n  \"subcategory\": \"MEMBER\",\n  \"call_log_ids\": [\n    209,\n    5678\n  ],\n  \"last_call_date\": \"1991-08-19T22:14:16.691Z\",\n  \"phone_number\": \"string\",\n  \"fax_links\": [\n    \"string\",\n    \"string\"\n  ],\n  \"payor_api_data\": {\n    \"key_0\": \"string\"\n  },\n  \"external_id\": \"string\",\n  \"updated_at\": \"1967-04-24T17:43:30.737Z\",\n  \"retries\": 4971,\n  \"scheduled_time\": \"2019-03-27T06:05:15.892Z\",\n  \"categorization\": {\n    \"key_0\": 4805.43579535207\n  },\n  \"outcome\": \"string\",\n  \"statistics\": {\n    \"key_0\": 1515\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "84991312-7466-4755-a6a8-34c1202e58ac",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "targets",
+                    ":target_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "target_id",
+                      "description": "(Required) The ID of the target to get the required variables from."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a99c1e9c-1704-4c4e-bc31-05f7d7eeb033",
+          "name": "Update Target Input Data",
+          "request": {
+            "name": "Update Target Input Data",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "targets",
+                ":target_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "target_id",
+                  "description": "(Required) The ID of the target whose input_data to update."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"input_data\": {\n    \"key_0\": \"string\",\n    \"key_1\": 5508.605654568948,\n    \"key_2\": 4859\n  },\n  \"only_if_not_started\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e188abff-bb46-4aa8-b189-fd980518f477",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "targets",
+                    ":target_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "target_id",
+                      "description": "(Required) The ID of the target whose input_data to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"input_data\": {\n    \"key_0\": 3876,\n    \"key_1\": \"string\",\n    \"key_2\": 1710.0889606308479\n  },\n  \"only_if_not_started\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"target_url\": \"string\",\n  \"organization_id\": \"string\",\n  \"campaign_id\": \"string\",\n  \"created_at\": \"1995-03-07T06:46:14.985Z\",\n  \"execution_minutes\": 6182,\n  \"input_data\": {\n    \"key_0\": 8748.337727172258\n  },\n  \"output_data\": {\n    \"key_0\": \"string\"\n  },\n  \"status\": \"Post-processing\",\n  \"resolution\": \"retrieved\",\n  \"category\": \"MEMBER_CONSENT_REQUIRED\",\n  \"subcategory\": \"MEMBER\",\n  \"call_log_ids\": [\n    209,\n    5678\n  ],\n  \"last_call_date\": \"1991-08-19T22:14:16.691Z\",\n  \"phone_number\": \"string\",\n  \"fax_links\": [\n    \"string\",\n    \"string\"\n  ],\n  \"payor_api_data\": {\n    \"key_0\": \"string\"\n  },\n  \"external_id\": \"string\",\n  \"updated_at\": \"1967-04-24T17:43:30.737Z\",\n  \"retries\": 4971,\n  \"scheduled_time\": \"2019-03-27T06:05:15.892Z\",\n  \"categorization\": {\n    \"key_0\": 4805.43579535207\n  },\n  \"outcome\": \"string\",\n  \"statistics\": {\n    \"key_0\": 1515\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "778eeb20-df13-4abf-9bd5-870db5541c98",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "targets",
+                    ":target_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "target_id",
+                      "description": "(Required) The ID of the target whose input_data to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"input_data\": {\n    \"key_0\": 3876,\n    \"key_1\": \"string\",\n    \"key_2\": 1710.0889606308479\n  },\n  \"only_if_not_started\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "7c7154a9-1499-4982-8487-741bb0df911c",
+    "name": "Prosper Voice API Keys Targets API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

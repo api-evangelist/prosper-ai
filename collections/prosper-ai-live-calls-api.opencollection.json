@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Prosper Voice API Keys Live Calls API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Live Calls",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Live Call",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/live-calls",
+            "params": [
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "The key of the variable to search for"
+              },
+              {
+                "name": "value",
+                "value": "",
+                "type": "query",
+                "description": "The value of the variable to search for"
+              },
+              {
+                "name": "call_log_id",
+                "value": "",
+                "type": "query",
+                "description": "The ID of the call log to search for"
+              },
+              {
+                "name": "user_phone_number",
+                "value": "",
+                "type": "query",
+                "description": "The phone number of the user to search for"
+              }
+            ]
+          },
+          "docs": "Return a flat snapshot of a call by one of:\n\n- `call_log_id`\n- `user_phone_number`\n- `key` + `value` (any variable previously mapped on the flow)\n\nTries `live_calls` first (source=`live_calls`), then falls back to\n`v_call_logs` (source=`call_logs`). Response is a single-level dict with\ndotted keys for any nested values."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

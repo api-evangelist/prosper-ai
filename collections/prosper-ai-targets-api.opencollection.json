@@ -1,0 +1,60 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Prosper Voice API Keys Targets API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Targets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve Target",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/targets/:target_id",
+            "params": [
+              {
+                "name": "target_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the target to get the required variables from."
+              }
+            ]
+          },
+          "docs": "Retrieve Target"
+        },
+        {
+          "info": {
+            "name": "Update Target Input Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/api/v1/targets/:target_id",
+            "params": [
+              {
+                "name": "target_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the target whose input_data to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Target Input Data"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

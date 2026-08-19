@@ -1,0 +1,86 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Prosper Voice API Keys Call Logs API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Call Logs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Call Logs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/call-logs",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "The page number to get."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of call logs per page."
+              },
+              {
+                "name": "from_date",
+                "value": "",
+                "type": "query",
+                "description": "Filter logs from this date."
+              },
+              {
+                "name": "to_date",
+                "value": "",
+                "type": "query",
+                "description": "Filter logs until this date."
+              },
+              {
+                "name": "campaign_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter logs by campaign ID."
+              }
+            ]
+          },
+          "docs": "List all call logs for the organization with pagination and date filtering."
+        },
+        {
+          "info": {
+            "name": "Get Call Log",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/call-logs/:call_log_id",
+            "params": [
+              {
+                "name": "call_log_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the call log to get the information."
+              },
+              {
+                "name": "include_recordings",
+                "value": "",
+                "type": "query",
+                "description": "Whether to include recordings."
+              }
+            ]
+          },
+          "docs": "Get detailed information for a specific call log."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

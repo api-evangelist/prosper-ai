@@ -1,0 +1,1743 @@
+{
+  "item": [
+    {
+      "id": "bea0b4bd-f8b9-4865-9b93-8244ff7a7496",
+      "name": "Campaigns",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "65f01917-93be-43de-99bf-8a6f6b65a00e",
+          "name": "Campaign Calls",
+          "request": {
+            "name": "Campaign Calls",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "campaigns",
+                ":campaign_id",
+                "calls"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "campaign_id",
+                  "description": "(Required) The ID of the campaign."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"target_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"count\": \"<integer>\",\n  \"prioritize_oldest\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1ab01abc-41fc-4f68-a55f-d8b0d20e9fc8",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "campaigns",
+                    ":campaign_id",
+                    "calls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaign_id",
+                      "description": "(Required) The ID of the campaign."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"target_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"count\": \"<integer>\",\n  \"prioritize_oldest\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d69f1393-2b20-4632-bcb0-6f6f8f4ffad4",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "campaigns",
+                    ":campaign_id",
+                    "calls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaign_id",
+                      "description": "(Required) The ID of the campaign."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"target_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"count\": \"<integer>\",\n  \"prioritize_oldest\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9588ea8d-67b8-42b9-b06f-9181481bc48c",
+          "name": "Add Targets",
+          "request": {
+            "name": "Add Targets",
+            "description": {
+              "content": "Add targets to a campaign",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "campaigns",
+                ":campaign_id",
+                "targets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "campaign_id",
+                  "description": "(Required) The ID of the campaign to add targets to."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"targets\": [\n    {\n      \"phone_number\": \"<string>\",\n      \"id\": \"<string>\",\n      \"external_id\": \"<string>\",\n      \"fallback_phone_number\": \"<string>\",\n      \"input_data\": {\n        \"key_0\": 9411\n      },\n      \"patient\": {\n        \"first_name\": \"<string>\",\n        \"last_name\": \"<string>\",\n        \"date_of_birth\": \"<string>\",\n        \"phone_number\": \"<string>\",\n        \"external_id\": \"<string>\",\n        \"extra_data\": {\n          \"key_0\": true,\n          \"key_1\": \"string\",\n          \"key_2\": \"string\"\n        }\n      },\n      \"pre_call_data\": {\n        \"key_0\": false,\n        \"key_1\": 6744.011334368525\n      }\n    },\n    {\n      \"phone_number\": \"<string>\",\n      \"id\": \"<string>\",\n      \"external_id\": \"<string>\",\n      \"fallback_phone_number\": \"<string>\",\n      \"input_data\": {\n        \"key_0\": 487,\n        \"key_1\": \"string\",\n        \"key_2\": 4772\n      },\n      \"patient\": {\n        \"first_name\": \"<string>\",\n        \"last_name\": \"<string>\",\n        \"date_of_birth\": \"<string>\",\n        \"phone_number\": \"<string>\",\n        \"external_id\": \"<string>\",\n        \"extra_data\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        }\n      },\n      \"pre_call_data\": {\n        \"key_0\": 5450.690075218492,\n        \"key_1\": 8452.042271893783\n      }\n    }\n  ],\n  \"launch\": false,\n  \"allow_duplicates\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9c3098a7-3576-4353-96e8-12772e23b2a8",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "campaigns",
+                    ":campaign_id",
+                    "targets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaign_id",
+                      "description": "(Required) The ID of the campaign to add targets to."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"targets\": [\n    {\n      \"phone_number\": \"string\",\n      \"id\": \"string\",\n      \"external_id\": \"string\",\n      \"fallback_phone_number\": \"string\",\n      \"input_data\": {\n        \"key_0\": \"string\",\n        \"key_1\": false,\n        \"key_2\": true\n      },\n      \"patient\": {\n        \"first_name\": \"string\",\n        \"last_name\": \"string\",\n        \"date_of_birth\": \"string\",\n        \"phone_number\": \"string\",\n        \"external_id\": \"string\",\n        \"extra_data\": {\n          \"key_0\": false,\n          \"key_1\": \"string\",\n          \"key_2\": true,\n          \"key_3\": 788\n        }\n      },\n      \"pre_call_data\": {\n        \"key_0\": 8866.002394451354\n      }\n    },\n    {\n      \"phone_number\": \"string\",\n      \"id\": \"string\",\n      \"external_id\": \"string\",\n      \"fallback_phone_number\": \"string\",\n      \"input_data\": {\n        \"key_0\": 5766.631228469262,\n        \"key_1\": 8763.450789915152,\n        \"key_2\": \"string\",\n        \"key_3\": 4016\n      },\n      \"patient\": {\n        \"first_name\": \"string\",\n        \"last_name\": \"string\",\n        \"date_of_birth\": \"string\",\n        \"phone_number\": \"string\",\n        \"external_id\": \"string\",\n        \"extra_data\": {\n          \"key_0\": false,\n          \"key_1\": false\n        }\n      },\n      \"pre_call_data\": {\n        \"key_0\": \"string\",\n        \"key_1\": 665\n      }\n    }\n  ],\n  \"launch\": false,\n  \"allow_duplicates\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e4e75d04-0b7b-480b-ae2e-bb0435ad9467",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "campaigns",
+                    ":campaign_id",
+                    "targets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaign_id",
+                      "description": "(Required) The ID of the campaign to add targets to."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"targets\": [\n    {\n      \"phone_number\": \"string\",\n      \"id\": \"string\",\n      \"external_id\": \"string\",\n      \"fallback_phone_number\": \"string\",\n      \"input_data\": {\n        \"key_0\": \"string\",\n        \"key_1\": false,\n        \"key_2\": true\n      },\n      \"patient\": {\n        \"first_name\": \"string\",\n        \"last_name\": \"string\",\n        \"date_of_birth\": \"string\",\n        \"phone_number\": \"string\",\n        \"external_id\": \"string\",\n        \"extra_data\": {\n          \"key_0\": false,\n          \"key_1\": \"string\",\n          \"key_2\": true,\n          \"key_3\": 788\n        }\n      },\n      \"pre_call_data\": {\n        \"key_0\": 8866.002394451354\n      }\n    },\n    {\n      \"phone_number\": \"string\",\n      \"id\": \"string\",\n      \"external_id\": \"string\",\n      \"fallback_phone_number\": \"string\",\n      \"input_data\": {\n        \"key_0\": 5766.631228469262,\n        \"key_1\": 8763.450789915152,\n        \"key_2\": \"string\",\n        \"key_3\": 4016\n      },\n      \"patient\": {\n        \"first_name\": \"string\",\n        \"last_name\": \"string\",\n        \"date_of_birth\": \"string\",\n        \"phone_number\": \"string\",\n        \"external_id\": \"string\",\n        \"extra_data\": {\n          \"key_0\": false,\n          \"key_1\": false\n        }\n      },\n      \"pre_call_data\": {\n        \"key_0\": \"string\",\n        \"key_1\": 665\n      }\n    }\n  ],\n  \"launch\": false,\n  \"allow_duplicates\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c6aa8b8a-5a64-44c1-a1c0-50fbab036a9e",
+          "name": "Delete Targets",
+          "request": {
+            "name": "Delete Targets",
+            "description": {
+              "content": "Delete targets from a campaign",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "campaigns",
+                ":campaign_id",
+                "targets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "campaign_id",
+                  "description": "(Required) The ID of the campaign to delete targets from."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"target_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b83f942c-dcc2-40cd-88d1-62d1099af528",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "campaigns",
+                    ":campaign_id",
+                    "targets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaign_id",
+                      "description": "(Required) The ID of the campaign to delete targets from."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"target_ids\": [\n    \"1234-abcd-1234\",\n    \"5678-efgh-5678\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c2ad8a7f-2e1d-46d2-a7dc-741949da0ce2",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "campaigns",
+                    ":campaign_id",
+                    "targets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaign_id",
+                      "description": "(Required) The ID of the campaign to delete targets from."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"target_ids\": [\n    \"1234-abcd-1234\",\n    \"5678-efgh-5678\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4b560ab7-d8e7-4ad5-adc3-768e098480e2",
+          "name": "Get Campaign Targets",
+          "request": {
+            "name": "Get Campaign Targets",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "campaigns",
+                ":campaign_id",
+                "targets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "The page number to get."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "The number of targets per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "The status of the targets to get."
+                },
+                {
+                  "disabled": false,
+                  "key": "from_date",
+                  "value": "<dateTime>",
+                  "description": "The start date to get."
+                },
+                {
+                  "disabled": false,
+                  "key": "to_date",
+                  "value": "<dateTime>",
+                  "description": "The end date to get."
+                },
+                {
+                  "disabled": false,
+                  "key": "from_last_call_date",
+                  "value": "<dateTime>",
+                  "description": "The date to get targets from the last call date."
+                },
+                {
+                  "disabled": false,
+                  "key": "to_last_call_date",
+                  "value": "<dateTime>",
+                  "description": "The date to get targets to the last call date."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "campaign_id",
+                  "description": "(Required) The ID of the campaign."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ba26cd82-a51f-4405-8708-e1aa8cf6f455",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "campaigns",
+                    ":campaign_id",
+                    "targets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "status",
+                      "value": "Post-processing"
+                    },
+                    {
+                      "key": "from_date",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "to_date",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "from_last_call_date",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "to_last_call_date",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaign_id",
+                      "description": "(Required) The ID of the campaign."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"targets\": [\n    {\n      \"id\": \"string\",\n      \"target_url\": \"string\",\n      \"organization_id\": \"string\",\n      \"campaign_id\": \"string\",\n      \"created_at\": \"2025-06-26T22:36:02.032Z\",\n      \"execution_minutes\": 6150,\n      \"input_data\": {\n        \"key_0\": \"string\",\n        \"key_1\": 2801.80187252551\n      },\n      \"output_data\": {\n        \"key_0\": \"string\",\n        \"key_1\": 9512.927680970246,\n        \"key_2\": true\n      },\n      \"status\": \"Post-processing\",\n      \"resolution\": \"not_retrieved\",\n      \"category\": \"WRONG_PHONE_NUMBER\",\n      \"subcategory\": \"OTHER\",\n      \"call_log_ids\": [\n        626,\n        7833\n      ],\n      \"last_call_date\": \"2001-05-03T11:24:22.977Z\",\n      \"phone_number\": \"string\",\n      \"fax_links\": [\n        \"string\",\n        \"string\"\n      ],\n      \"payor_api_data\": {\n        \"key_0\": false,\n        \"key_1\": false\n      },\n      \"external_id\": \"string\",\n      \"updated_at\": \"2011-01-03T04:55:01.821Z\",\n      \"retries\": 5749,\n      \"scheduled_time\": \"2013-10-31T14:00:16.805Z\",\n      \"categorization\": {\n        \"key_0\": \"string\",\n        \"key_1\": 5475,\n        \"key_2\": false,\n        \"key_3\": 7669.5798117776385\n      },\n      \"outcome\": \"string\",\n      \"statistics\": {\n        \"key_0\": 5071.011198889409,\n        \"key_1\": 4726.751635605509,\n        \"key_2\": \"string\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"target_url\": \"string\",\n      \"organization_id\": \"string\",\n      \"campaign_id\": \"string\",\n      \"created_at\": \"2008-01-04T03:18:51.245Z\",\n      \"execution_minutes\": 8454,\n      \"input_data\": {\n        \"key_0\": \"string\"\n      },\n      \"output_data\": {\n        \"key_0\": false\n      },\n      \"status\": \"Pending\",\n      \"resolution\": \"retrieved\",\n      \"category\": \"CLOSED_FOR_HOLIDAYS\",\n      \"subcategory\": \"REQUEST\",\n      \"call_log_ids\": [\n        5833,\n        2995\n      ],\n      \"last_call_date\": \"2000-09-13T09:44:00.143Z\",\n      \"phone_number\": \"string\",\n      \"fax_links\": [\n        \"string\",\n        \"string\"\n      ],\n      \"payor_api_data\": {\n        \"key_0\": 1344\n      },\n      \"external_id\": \"string\",\n      \"updated_at\": \"1994-02-15T07:06:40.923Z\",\n      \"retries\": 3703,\n      \"scheduled_time\": \"1950-04-03T16:26:30.787Z\",\n      \"categorization\": {\n        \"key_0\": 5418\n      },\n      \"outcome\": \"string\",\n      \"statistics\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      }\n    }\n  ],\n  \"page_count\": 4818,\n  \"next_page\": 4003\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "54e55284-e929-4e46-9f75-4498908c0913",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "campaigns",
+                    ":campaign_id",
+                    "targets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "status",
+                      "value": "Post-processing"
+                    },
+                    {
+                      "key": "from_date",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "to_date",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "from_last_call_date",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "to_last_call_date",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaign_id",
+                      "description": "(Required) The ID of the campaign."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "28632110-6fc3-4c48-967b-3eefddc4507f",
+          "name": "Get Required Variables",
+          "request": {
+            "name": "Get Required Variables",
+            "description": {
+              "content": "If successful returns a json with the needed variables for the campaign.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "campaigns",
+                ":campaign_id",
+                "variables"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "campaign_id",
+                  "description": "(Required) The ID of the campaign to get the variables from."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b3634966-51fc-483c-94b6-53433af571ae",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "campaigns",
+                    ":campaign_id",
+                    "variables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaign_id",
+                      "description": "(Required) The ID of the campaign to get the variables from."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0a898cc0-fb20-408f-a009-5026f6866cd5",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "campaigns",
+                    ":campaign_id",
+                    "variables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaign_id",
+                      "description": "(Required) The ID of the campaign to get the variables from."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "34c7dbe4-e714-4758-b10f-07ac4886ceb3",
+          "name": "Receive Webhook Step",
+          "request": {
+            "name": "Receive Webhook Step",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "campaigns",
+                ":campaign_id",
+                "targets",
+                ":target_id",
+                "step",
+                ":friendly_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "target_id",
+                  "description": "(Required) The ID of the target."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "campaign_id",
+                  "description": "(Required) The ID of the campaign."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "friendly_id",
+                  "description": "(Required) The friendly ID of the step."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key_0\": 8754,\n  \"key_1\": 8582.737539735095,\n  \"key_2\": false,\n  \"key_3\": 6653.991811104004\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "446f0f94-f2f0-4e58-ab2c-d167d5b9fa34",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "campaigns",
+                    ":campaign_id",
+                    "targets",
+                    ":target_id",
+                    "step",
+                    ":friendly_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "target_id",
+                      "description": "(Required) The ID of the target."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaign_id",
+                      "description": "(Required) The ID of the campaign."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "friendly_id",
+                      "description": "(Required) The friendly ID of the step."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key_0\": 3763.3093351568127,\n  \"key_1\": 9091.427921758244,\n  \"key_2\": 1129.6712457645986\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2905ae8d-d31e-423e-9eb3-8a7976e5c6ab",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "campaigns",
+                    ":campaign_id",
+                    "targets",
+                    ":target_id",
+                    "step",
+                    ":friendly_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "target_id",
+                      "description": "(Required) The ID of the target."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaign_id",
+                      "description": "(Required) The ID of the campaign."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "friendly_id",
+                      "description": "(Required) The friendly ID of the step."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key_0\": 3763.3093351568127,\n  \"key_1\": 9091.427921758244,\n  \"key_2\": 1129.6712457645986\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8ce72929-4c37-4094-aa0c-152a0aeaf8e3",
+          "name": "Receive Ehr Event Step",
+          "request": {
+            "name": "Receive Ehr Event Step",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "campaigns",
+                ":campaign_id",
+                "ehr-event",
+                ":friendly_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "campaign_id",
+                  "description": "(Required) The ID of the campaign."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "friendly_id",
+                  "description": "(Required) The friendly ID of the step."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"event_type\": \"<string>\",\n  \"event_data\": {\n    \"key_0\": 5129.080212956558\n  },\n  \"target_id\": \"<string>\",\n  \"external_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7fd1e4a9-1984-48f2-afd9-dad8bf338ecd",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "campaigns",
+                    ":campaign_id",
+                    "ehr-event",
+                    ":friendly_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaign_id",
+                      "description": "(Required) The ID of the campaign."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "friendly_id",
+                      "description": "(Required) The friendly ID of the step."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event_type\": \"patient_registered\",\n  \"event_data\": {\n    \"key_0\": 1129.1285963071507,\n    \"key_1\": 6375.760195686368\n  },\n  \"target_id\": \"<string>\",\n  \"external_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "40e088f5-050b-4254-9f3b-9ecc48f207f4",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "campaigns",
+                    ":campaign_id",
+                    "ehr-event",
+                    ":friendly_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaign_id",
+                      "description": "(Required) The ID of the campaign."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "friendly_id",
+                      "description": "(Required) The friendly ID of the step."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event_type\": \"patient_registered\",\n  \"event_data\": {\n    \"key_0\": 1129.1285963071507,\n    \"key_1\": 6375.760195686368\n  },\n  \"target_id\": \"<string>\",\n  \"external_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0bde4b48-f0b7-459d-8ff1-24d28dbbe656",
+          "name": "Rerun Failed Webhooks",
+          "request": {
+            "name": "Rerun Failed Webhooks",
+            "description": {
+              "content": "Re-run failed webhook notifications for a campaign within a time window.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "campaigns",
+                ":campaign_id",
+                "webhooks",
+                "rerun-failed"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "campaign_id",
+                  "description": "(Required) The ID of the campaign."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"from_date\": \"<dateTime>\",\n  \"to_date\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0d71fc72-64b1-47b4-a2da-c0792949253c",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "campaigns",
+                    ":campaign_id",
+                    "webhooks",
+                    "rerun-failed"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaign_id",
+                      "description": "(Required) The ID of the campaign."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"from_date\": \"<dateTime>\",\n  \"to_date\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2aed4712-ff3b-495f-98fa-01aaaf5fc5b7",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "campaigns",
+                    ":campaign_id",
+                    "webhooks",
+                    "rerun-failed"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaign_id",
+                      "description": "(Required) The ID of the campaign."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"from_date\": \"<dateTime>\",\n  \"to_date\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d89de553-3eb3-415d-bf28-1ca329f8a609",
+          "name": "Get Patient Campaign Targets",
+          "request": {
+            "name": "Get Patient Campaign Targets",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "campaigns",
+                ":campaign_id",
+                "patient",
+                "targets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "The page number to get."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "The number of targets per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "The status of the targets to get."
+                },
+                {
+                  "disabled": false,
+                  "key": "from_date",
+                  "value": "<dateTime>",
+                  "description": "The start date to get."
+                },
+                {
+                  "disabled": false,
+                  "key": "to_date",
+                  "value": "<dateTime>",
+                  "description": "The end date to get."
+                },
+                {
+                  "disabled": false,
+                  "key": "from_last_call_date",
+                  "value": "<dateTime>",
+                  "description": "The date to get targets from the last call date."
+                },
+                {
+                  "disabled": false,
+                  "key": "to_last_call_date",
+                  "value": "<dateTime>",
+                  "description": "The date to get targets to the last call date."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "campaign_id",
+                  "description": "(Required) The ID of the campaign."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b676fc1d-8cf7-4cdd-9b37-0d4a31d2c64d",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "campaigns",
+                    ":campaign_id",
+                    "patient",
+                    "targets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "status",
+                      "value": "Post-processing"
+                    },
+                    {
+                      "key": "from_date",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "to_date",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "from_last_call_date",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "to_last_call_date",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaign_id",
+                      "description": "(Required) The ID of the campaign."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"targets\": [\n    {\n      \"id\": \"string\",\n      \"target_url\": \"string\",\n      \"organization_id\": \"string\",\n      \"campaign_id\": \"string\",\n      \"created_at\": \"2009-07-09T17:19:52.138Z\",\n      \"execution_minutes\": 8275,\n      \"input_data\": {\n        \"key_0\": 6733\n      },\n      \"output_data\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\"\n      },\n      \"status\": \"Failed\",\n      \"resolution\": \"retrieved\",\n      \"category\": \"IVR_LOOP\",\n      \"subcategory\": \"MEMBER\",\n      \"call_log_ids\": [\n        8855,\n        6761\n      ],\n      \"last_call_date\": \"1995-02-25T19:09:21.619Z\",\n      \"phone_number\": \"string\",\n      \"fax_links\": [\n        \"string\",\n        \"string\"\n      ],\n      \"payor_api_data\": {\n        \"key_0\": 6270\n      },\n      \"external_id\": \"string\",\n      \"updated_at\": \"1964-10-09T02:15:59.207Z\",\n      \"retries\": 8123,\n      \"scheduled_time\": \"1998-12-12T16:23:58.884Z\",\n      \"categorization\": {\n        \"key_0\": 7802,\n        \"key_1\": true\n      },\n      \"outcome\": \"string\",\n      \"statistics\": {\n        \"key_0\": 4710\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"target_url\": \"string\",\n      \"organization_id\": \"string\",\n      \"campaign_id\": \"string\",\n      \"created_at\": \"2000-06-16T05:16:21.980Z\",\n      \"execution_minutes\": 4004,\n      \"input_data\": {\n        \"key_0\": 1181.3793133645045\n      },\n      \"output_data\": {\n        \"key_0\": \"string\"\n      },\n      \"status\": \"SMS Scheduled\",\n      \"resolution\": \"retrieved\",\n      \"category\": \"SERVICE_NOT_AVAILABLE\",\n      \"subcategory\": \"OTHER\",\n      \"call_log_ids\": [\n        4818,\n        8441\n      ],\n      \"last_call_date\": \"1979-12-03T06:02:44.983Z\",\n      \"phone_number\": \"string\",\n      \"fax_links\": [\n        \"string\",\n        \"string\"\n      ],\n      \"payor_api_data\": {\n        \"key_0\": \"string\"\n      },\n      \"external_id\": \"string\",\n      \"updated_at\": \"2014-09-26T03:59:49.121Z\",\n      \"retries\": 8619,\n      \"scheduled_time\": \"2001-07-05T11:15:04.919Z\",\n      \"categorization\": {\n        \"key_0\": 8531.19163938206\n      },\n      \"outcome\": \"string\",\n      \"statistics\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      }\n    }\n  ],\n  \"page_count\": 9958,\n  \"next_page\": 1106\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eb5525a2-2188-4498-8b9d-6d7f8ca2d913",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "campaigns",
+                    ":campaign_id",
+                    "patient",
+                    "targets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "status",
+                      "value": "Post-processing"
+                    },
+                    {
+                      "key": "from_date",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "to_date",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "from_last_call_date",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "to_last_call_date",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaign_id",
+                      "description": "(Required) The ID of the campaign."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "15404329-2738-469a-9efa-4573d389a2c4",
+    "name": "Prosper Voice API Keys Campaigns API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

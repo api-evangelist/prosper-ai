@@ -1,0 +1,315 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Prosper Voice API Keys Campaigns API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Campaigns",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Campaign Calls",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/campaigns/:campaign_id/calls",
+            "params": [
+              {
+                "name": "campaign_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the campaign."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Campaign Calls"
+        },
+        {
+          "info": {
+            "name": "Get Campaign Targets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/campaigns/:campaign_id/targets",
+            "params": [
+              {
+                "name": "campaign_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the campaign."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "The page number to get."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of targets per page."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "The status of the targets to get."
+              },
+              {
+                "name": "from_date",
+                "value": "",
+                "type": "query",
+                "description": "The start date to get."
+              },
+              {
+                "name": "to_date",
+                "value": "",
+                "type": "query",
+                "description": "The end date to get."
+              },
+              {
+                "name": "from_last_call_date",
+                "value": "",
+                "type": "query",
+                "description": "The date to get targets from the last call date."
+              },
+              {
+                "name": "to_last_call_date",
+                "value": "",
+                "type": "query",
+                "description": "The date to get targets to the last call date."
+              }
+            ]
+          },
+          "docs": "Get Campaign Targets"
+        },
+        {
+          "info": {
+            "name": "Add Targets",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/campaigns/:campaign_id/targets",
+            "params": [
+              {
+                "name": "campaign_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the campaign to add targets to."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add targets to a campaign"
+        },
+        {
+          "info": {
+            "name": "Delete Targets",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v1/campaigns/:campaign_id/targets",
+            "params": [
+              {
+                "name": "campaign_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the campaign to delete targets from."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Delete targets from a campaign"
+        },
+        {
+          "info": {
+            "name": "Get Required Variables",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/campaigns/:campaign_id/variables",
+            "params": [
+              {
+                "name": "campaign_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the campaign to get the variables from."
+              }
+            ]
+          },
+          "docs": "If successful returns a json with the needed variables for the campaign."
+        },
+        {
+          "info": {
+            "name": "Receive Webhook Step",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/campaigns/:campaign_id/targets/:target_id/step/:friendly_id",
+            "params": [
+              {
+                "name": "target_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the target."
+              },
+              {
+                "name": "campaign_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the campaign."
+              },
+              {
+                "name": "friendly_id",
+                "value": "",
+                "type": "path",
+                "description": "The friendly ID of the step."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Receive Webhook Step"
+        },
+        {
+          "info": {
+            "name": "Receive Ehr Event Step",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/campaigns/:campaign_id/ehr-event/:friendly_id",
+            "params": [
+              {
+                "name": "campaign_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the campaign."
+              },
+              {
+                "name": "friendly_id",
+                "value": "",
+                "type": "path",
+                "description": "The friendly ID of the step."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Receive Ehr Event Step"
+        },
+        {
+          "info": {
+            "name": "Rerun Failed Webhooks",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/campaigns/:campaign_id/webhooks/rerun-failed",
+            "params": [
+              {
+                "name": "campaign_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the campaign."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Re-run failed webhook notifications for a campaign within a time window."
+        },
+        {
+          "info": {
+            "name": "Get Patient Campaign Targets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/campaigns/:campaign_id/patient/targets",
+            "params": [
+              {
+                "name": "campaign_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the campaign."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "The page number to get."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of targets per page."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "The status of the targets to get."
+              },
+              {
+                "name": "from_date",
+                "value": "",
+                "type": "query",
+                "description": "The start date to get."
+              },
+              {
+                "name": "to_date",
+                "value": "",
+                "type": "query",
+                "description": "The end date to get."
+              },
+              {
+                "name": "from_last_call_date",
+                "value": "",
+                "type": "query",
+                "description": "The date to get targets from the last call date."
+              },
+              {
+                "name": "to_last_call_date",
+                "value": "",
+                "type": "query",
+                "description": "The date to get targets to the last call date."
+              }
+            ]
+          },
+          "docs": "Get Patient Campaign Targets"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
