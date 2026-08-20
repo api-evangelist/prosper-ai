@@ -62,6 +62,8 @@ apis:
   humanURL: https://docs.getprosperapp.com/introduction
   baseURL: https://voice.getprosperapp.com
   tags:
+  - APIKeys
+  tags_raw:
   - API Keys
   properties:
   - type: OpenAPI
