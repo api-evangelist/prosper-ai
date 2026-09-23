@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Prosper Voice API Keys Call Logs API
+  title: Prosper Voice Call Logs API
   version: 1.0.0
 tags:
 - name: Call Logs
@@ -121,6 +121,115 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+        input:
+          title: Input
+        ctx:
+          type: object
+          title: Context
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    CallLogListExportInformation:
+      properties:
+        id:
+          type: string
+          title: Id
+        to:
+          type: string
+          title: To
+        from_:
+          anyOf:
+          - type: string
+            const: DeprecatedLocalTest
+          - type: string
+          title: From
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+        call_length:
+          type: string
+          title: Call Length
+        call_ended_reason:
+          type: string
+          title: Call Ended Reason
+        call_categorization:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          title: Call Categorization
+        agent_data:
+          additionalProperties: true
+          type: object
+          title: Agent Data
+        campaign_target_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Campaign Target Id
+        post_call_data:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          title: Post Call Data
+        qa:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          title: Qa
+        transcripts:
+          items:
+            additionalProperties:
+              type: string
+            type: object
+          type: array
+          title: Transcripts
+      type: object
+      required:
+      - id
+      - to
+      - from_
+      - created_at
+      - call_length
+      - call_ended_reason
+      - call_categorization
+      - agent_data
+      - campaign_target_id
+      - post_call_data
+      - qa
+      - transcripts
+      title: CallLogListExportInformation
+      description: Call log export information for list endpoint - includes full data except recordings
     CallLogExportInformation:
       properties:
         id:
@@ -202,115 +311,6 @@ components:
       - qa
       - transcripts
       title: CallLogExportInformation
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-        input:
-          title: Input
-        ctx:
-          type: object
-          title: Context
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    CallLogListExportInformation:
-      properties:
-        id:
-          type: string
-          title: Id
-        to:
-          type: string
-          title: To
-        from_:
-          anyOf:
-          - type: string
-            const: DeprecatedLocalTest
-          - type: string
-          title: From
-        created_at:
-          type: string
-          format: date-time
-          title: Created At
-        call_length:
-          type: string
-          title: Call Length
-        call_ended_reason:
-          type: string
-          title: Call Ended Reason
-        call_categorization:
-          anyOf:
-          - additionalProperties: true
-            type: object
-          - type: 'null'
-          title: Call Categorization
-        agent_data:
-          additionalProperties: true
-          type: object
-          title: Agent Data
-        campaign_target_id:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Campaign Target Id
-        post_call_data:
-          anyOf:
-          - additionalProperties: true
-            type: object
-          - type: 'null'
-          title: Post Call Data
-        qa:
-          anyOf:
-          - additionalProperties: true
-            type: object
-          - type: 'null'
-          title: Qa
-        transcripts:
-          items:
-            additionalProperties:
-              type: string
-            type: object
-          type: array
-          title: Transcripts
-      type: object
-      required:
-      - id
-      - to
-      - from_
-      - created_at
-      - call_length
-      - call_ended_reason
-      - call_categorization
-      - agent_data
-      - campaign_target_id
-      - post_call_data
-      - qa
-      - transcripts
-      title: CallLogListExportInformation
-      description: Call log export information for list endpoint - includes full data except recordings
     CallLogExportPaginated:
       properties:
         call_logs:

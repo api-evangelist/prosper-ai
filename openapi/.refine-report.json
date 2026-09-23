@@ -1,12 +1,7 @@
 {
   "provider": "prosper-ai",
   "sources": [
-    "prosper-ai-api-keys-api-openapi.yml",
-    "prosper-ai-call-logs-api-openapi.yml",
-    "prosper-ai-campaigns-api-openapi.yml",
-    "prosper-ai-live-calls-api-openapi.yml",
-    "prosper-ai-status-api-openapi.yml",
-    "prosper-ai-targets-api-openapi.yml"
+    "_original/prosper-ai-voice-openapi.json"
   ],
   "outputs": [
     "prosper-ai-api-keys-api-openapi.yml",
@@ -19,6 +14,23 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "prosper-ai-voice-openapi.json: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "prosper-ai-voice-openapi.json: declared missing tag: API Keys",
+    "prosper-ai-voice-openapi.json: declared missing tag: Call Logs",
+    "prosper-ai-voice-openapi.json: declared missing tag: Campaigns",
+    "prosper-ai-voice-openapi.json: declared missing tag: Live Calls",
+    "prosper-ai-voice-openapi.json: declared missing tag: Status",
+    "prosper-ai-voice-openapi.json: declared missing tag: Targets",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "prosper-ai-api-keys-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "prosper-ai-call-logs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "prosper-ai-campaigns-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "prosper-ai-live-calls-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "prosper-ai-status-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "prosper-ai-targets-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Prosper Voice API Keys Targets API
+  title: Prosper Voice Targets API
   version: 1.0.0
 tags:
 - name: Targets
@@ -68,6 +68,39 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
+    PatientCallCategory:
+      type: string
+      enum:
+      - GOOD
+      - NO_RESPONSE
+      - TRANSFER
+      - TRANSFER_FAILED
+      - VOICEMAIL
+      - SERVICE_NOT_AVAILABLE
+      - HUMAN_ONLY
+      - CALLBACK_REQUESTED
+      - MANAGER_REQUESTED
+      - DISCONNECTED
+      - DNC_REQUESTED
+      - WRONG_USER
+      - NOT_INTERESTED_RIGHT_NOW
+      - BLACKLISTED_PHONE
+      title: PatientCallCategory
+    HumanOnlySubcategory:
+      type: string
+      enum:
+      - STARTING_CALL
+      - MID_CALL
+      title: HumanOnlySubcategory
+    NotFoundSubCategory:
+      type: string
+      enum:
+      - PROVIDER
+      - MEMBER
+      - FACILITY
+      - REQUEST
+      - OTHER
+      title: NotFoundSubCategory
     PatientIncomingCallCategory:
       type: string
       enum:
@@ -82,23 +115,62 @@ components:
       - NO_RESPONSE
       - NOT_CONNECTED
       title: PatientIncomingCallCategory
-    CampaignTargetPayorResolution:
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    CampaignTargetPatientResolution:
       type: string
       enum:
-      - retrieved
-      - not_retrieved
-      title: CampaignTargetPayorResolution
-    IVRLoopSubCategory:
+      - successful
+      - unsuccessful
+      title: CampaignTargetPatientResolution
+    TransferSubCategory:
       type: string
       enum:
-      - NOT_RECOGNIZE_DATA
-      - NOT_FOUND
-      - LONG_WAITING_PERIOD
-      - BAD_INTERACTION_WITH_IVR
-      - IVR_ONLY_NUMBER
+      - HUMAN_REQUESTED
+      - INTEGRATION_ERROR
+      - INSURANCE_REJECTED
+      - TRANSFER_REQUESTED
+      - NATURAL_TRANSFER
+      title: TransferSubCategory
+    PayorCallCategory:
+      type: string
+      enum:
+      - GOOD
+      - NO_RESPONSE
+      - TRANSFER
+      - TRANSFER_FAILED
       - VOICEMAIL
-      - CALLBACK_OFFERED
-      title: IVRLoopSubCategory
+      - SERVICE_NOT_AVAILABLE
+      - HUMAN_ONLY
+      - AFTER_HOURS
+      - CLOSED_FOR_HOLIDAYS
+      - IVR_LOOP
+      - INPUT_DATA_ISSUE
+      - WRONG_PHONE_NUMBER
+      - NOT_FOUND
+      - UNPROCESSABLE_BY_PHONE
+      - DISCONNECTED
+      - NOT_ALL_DATA_POINTS_RETRIEVED
+      - MEMBER_CONSENT_REQUIRED
+      - SLA_EXPIRED
+      - PAYOR_NOT_SUPPORTED
+      - NO_OPERATING_HOURS
+      title: PayorCallCategory
+    ServiceNotAvailableSubCategory:
+      type: string
+      enum:
+      - PHONE_NUMBER_NOT_AVAILABLE
+      - CLOGGED_SERVICE
+      - TECHNICAL_ISSUE
+      - OTHER
+      title: ServiceNotAvailableSubCategory
     ValidationError:
       properties:
         loc:
@@ -125,12 +197,19 @@ components:
       - msg
       - type
       title: ValidationError
-    HumanOnlySubcategory:
+    CampaignTargetPayorResolution:
       type: string
       enum:
-      - STARTING_CALL
-      - MID_CALL
-      title: HumanOnlySubcategory
+      - retrieved
+      - not_retrieved
+      title: CampaignTargetPayorResolution
+    UnprocessableByPhoneSubCategory:
+      type: string
+      enum:
+      - FAX
+      - INSURANCE_PORTAL
+      - AUTOMATED_SYSTEM
+      title: UnprocessableByPhoneSubCategory
     PatientIncomingSchedulingCallCategory:
       type: string
       enum:
@@ -142,124 +221,6 @@ components:
       - TRANSFER_SOP
       - UNRESOLVED
       title: PatientIncomingSchedulingCallCategory
-    PatientCallCategory:
-      type: string
-      enum:
-      - GOOD
-      - NO_RESPONSE
-      - TRANSFER
-      - TRANSFER_FAILED
-      - VOICEMAIL
-      - SERVICE_NOT_AVAILABLE
-      - HUMAN_ONLY
-      - CALLBACK_REQUESTED
-      - MANAGER_REQUESTED
-      - DISCONNECTED
-      - DNC_REQUESTED
-      - WRONG_USER
-      - NOT_INTERESTED_RIGHT_NOW
-      - BLACKLISTED_PHONE
-      title: PatientCallCategory
-    PayorCallCategory:
-      type: string
-      enum:
-      - GOOD
-      - NO_RESPONSE
-      - TRANSFER
-      - TRANSFER_FAILED
-      - VOICEMAIL
-      - SERVICE_NOT_AVAILABLE
-      - HUMAN_ONLY
-      - AFTER_HOURS
-      - CLOSED_FOR_HOLIDAYS
-      - IVR_LOOP
-      - INPUT_DATA_ISSUE
-      - WRONG_PHONE_NUMBER
-      - NOT_FOUND
-      - UNPROCESSABLE_BY_PHONE
-      - DISCONNECTED
-      - NOT_ALL_DATA_POINTS_RETRIEVED
-      - MEMBER_CONSENT_REQUIRED
-      - SLA_EXPIRED
-      - PAYOR_NOT_SUPPORTED
-      - NO_OPERATING_HOURS
-      title: PayorCallCategory
-    NotFoundSubCategory:
-      type: string
-      enum:
-      - PROVIDER
-      - MEMBER
-      - FACILITY
-      - REQUEST
-      - OTHER
-      title: NotFoundSubCategory
-    UnprocessableByPhoneSubCategory:
-      type: string
-      enum:
-      - FAX
-      - INSURANCE_PORTAL
-      - AUTOMATED_SYSTEM
-      title: UnprocessableByPhoneSubCategory
-    InputDataIssueSubCategory:
-      type: string
-      enum:
-      - MISSING_INFORMATION
-      - INCORRECT_INFORMATION
-      title: InputDataIssueSubCategory
-    ProviderCallCategory:
-      type: string
-      enum:
-      - GOOD
-      - WRONG_USER
-      - PROVIDER_NO_LONGER_AT_LOCATION
-      - DISCONNECTED
-      - WRONG_PHONE_NUMBER
-      - HUMAN_ONLY
-      - DATA_ISSUE
-      - CALLBACK_REQUESTED
-      - TRANSFER_HANG_UP
-      - UNPROCESSABLE_BY_PHONE
-      - MEMBER_CONSENT_REQUIRED
-      - IVR_LOOP
-      - CLOSED_FOR_HOLIDAYS
-      - NO_RESPONSE
-      - VOICEMAIL
-      - AFTER_HOURS
-      - TRANSFER
-      - TRANSFER_FAILED
-      - BLACKLISTED_PHONE
-      title: ProviderCallCategory
-    TransferSubCategory:
-      type: string
-      enum:
-      - HUMAN_REQUESTED
-      - INTEGRATION_ERROR
-      - INSURANCE_REJECTED
-      - TRANSFER_REQUESTED
-      - NATURAL_TRANSFER
-      title: TransferSubCategory
-    UpdateTargetInputDataRequest:
-      properties:
-        input_data:
-          additionalProperties: true
-          type: object
-          title: Input Data
-          description: Fields to merge into the target's input_data. Only the keys present here are updated; existing keys not included are left unchanged.
-        only_if_not_started:
-          type: boolean
-          title: Only If Not Started
-          description: When true (default), the edit is rejected with 409 if the target has already started executing — i.e. a call has been placed, or it has left the Pending/Scheduled staging states. A Scheduled target with no calls yet is still editable. Set false to edit regardless.
-          default: true
-      type: object
-      required:
-      - input_data
-      title: UpdateTargetInputDataRequest
-    CampaignTargetPatientResolution:
-      type: string
-      enum:
-      - successful
-      - unsuccessful
-      title: CampaignTargetPatientResolution
     CampaignTargetStatus:
       type: string
       enum:
@@ -273,15 +234,6 @@ components:
       - Waiting
       - SMS Scheduled
       title: CampaignTargetStatus
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
     CampaignTargetResponse:
       properties:
         id:
@@ -434,11 +386,59 @@ components:
       - payor_api_data
       - external_id
       title: CampaignTargetResponse
-    ServiceNotAvailableSubCategory:
+    UpdateTargetInputDataRequest:
+      properties:
+        input_data:
+          additionalProperties: true
+          type: object
+          title: Input Data
+          description: Fields to merge into the target's input_data. Only the keys present here are updated; existing keys not included are left unchanged.
+        only_if_not_started:
+          type: boolean
+          title: Only If Not Started
+          description: When true (default), the edit is rejected with 409 if the target has already started executing — i.e. a call has been placed, or it has left the Pending/Scheduled staging states. A Scheduled target with no calls yet is still editable. Set false to edit regardless.
+          default: true
+      type: object
+      required:
+      - input_data
+      title: UpdateTargetInputDataRequest
+    ProviderCallCategory:
       type: string
       enum:
-      - PHONE_NUMBER_NOT_AVAILABLE
-      - CLOGGED_SERVICE
-      - TECHNICAL_ISSUE
-      - OTHER
-      title: ServiceNotAvailableSubCategory
+      - GOOD
+      - WRONG_USER
+      - PROVIDER_NO_LONGER_AT_LOCATION
+      - DISCONNECTED
+      - WRONG_PHONE_NUMBER
+      - HUMAN_ONLY
+      - DATA_ISSUE
+      - CALLBACK_REQUESTED
+      - TRANSFER_HANG_UP
+      - UNPROCESSABLE_BY_PHONE
+      - MEMBER_CONSENT_REQUIRED
+      - IVR_LOOP
+      - CLOSED_FOR_HOLIDAYS
+      - NO_RESPONSE
+      - VOICEMAIL
+      - AFTER_HOURS
+      - TRANSFER
+      - TRANSFER_FAILED
+      - BLACKLISTED_PHONE
+      title: ProviderCallCategory
+    IVRLoopSubCategory:
+      type: string
+      enum:
+      - NOT_RECOGNIZE_DATA
+      - NOT_FOUND
+      - LONG_WAITING_PERIOD
+      - BAD_INTERACTION_WITH_IVR
+      - IVR_ONLY_NUMBER
+      - VOICEMAIL
+      - CALLBACK_OFFERED
+      title: IVRLoopSubCategory
+    InputDataIssueSubCategory:
+      type: string
+      enum:
+      - MISSING_INFORMATION
+      - INCORRECT_INFORMATION
+      title: InputDataIssueSubCategory
