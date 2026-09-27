@@ -121,6 +121,27 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
+    CallLogExportPaginated:
+      properties:
+        call_logs:
+          items:
+            $ref: '#/components/schemas/CallLogListExportInformation'
+          type: array
+          title: Call Logs
+        page_count:
+          type: integer
+          title: Page Count
+        next_page:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Next Page
+      type: object
+      required:
+      - call_logs
+      - page_count
+      - next_page
+      title: CallLogExportPaginated
     ValidationError:
       properties:
         loc:
@@ -147,6 +168,87 @@ components:
       - msg
       - type
       title: ValidationError
+    CallLogExportInformation:
+      properties:
+        id:
+          type: string
+          title: Id
+        to:
+          type: string
+          title: To
+        from_:
+          anyOf:
+          - type: string
+            const: DeprecatedLocalTest
+          - type: string
+          title: From
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+        call_length:
+          type: string
+          title: Call Length
+        call_ended_reason:
+          type: string
+          title: Call Ended Reason
+        call_categorization:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          title: Call Categorization
+        recording_urls:
+          items:
+            anyOf:
+            - type: string
+            - type: 'null'
+          type: array
+          title: Recording Urls
+        agent_data:
+          additionalProperties: true
+          type: object
+          title: Agent Data
+        campaign_target_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Campaign Target Id
+        post_call_data:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          title: Post Call Data
+        qa:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          title: Qa
+        transcripts:
+          items:
+            additionalProperties:
+              type: string
+            type: object
+          type: array
+          title: Transcripts
+      type: object
+      required:
+      - id
+      - to
+      - from_
+      - created_at
+      - call_length
+      - call_ended_reason
+      - call_categorization
+      - recording_urls
+      - agent_data
+      - campaign_target_id
+      - post_call_data
+      - qa
+      - transcripts
+      title: CallLogExportInformation
     HTTPValidationError:
       properties:
         detail:
@@ -230,105 +332,3 @@ components:
       - transcripts
       title: CallLogListExportInformation
       description: Call log export information for list endpoint - includes full data except recordings
-    CallLogExportInformation:
-      properties:
-        id:
-          type: string
-          title: Id
-        to:
-          type: string
-          title: To
-        from_:
-          anyOf:
-          - type: string
-            const: DeprecatedLocalTest
-          - type: string
-          title: From
-        created_at:
-          type: string
-          format: date-time
-          title: Created At
-        call_length:
-          type: string
-          title: Call Length
-        call_ended_reason:
-          type: string
-          title: Call Ended Reason
-        call_categorization:
-          anyOf:
-          - additionalProperties: true
-            type: object
-          - type: 'null'
-          title: Call Categorization
-        recording_urls:
-          items:
-            anyOf:
-            - type: string
-            - type: 'null'
-          type: array
-          title: Recording Urls
-        agent_data:
-          additionalProperties: true
-          type: object
-          title: Agent Data
-        campaign_target_id:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Campaign Target Id
-        post_call_data:
-          anyOf:
-          - additionalProperties: true
-            type: object
-          - type: 'null'
-          title: Post Call Data
-        qa:
-          anyOf:
-          - additionalProperties: true
-            type: object
-          - type: 'null'
-          title: Qa
-        transcripts:
-          items:
-            additionalProperties:
-              type: string
-            type: object
-          type: array
-          title: Transcripts
-      type: object
-      required:
-      - id
-      - to
-      - from_
-      - created_at
-      - call_length
-      - call_ended_reason
-      - call_categorization
-      - recording_urls
-      - agent_data
-      - campaign_target_id
-      - post_call_data
-      - qa
-      - transcripts
-      title: CallLogExportInformation
-    CallLogExportPaginated:
-      properties:
-        call_logs:
-          items:
-            $ref: '#/components/schemas/CallLogListExportInformation'
-          type: array
-          title: Call Logs
-        page_count:
-          type: integer
-          title: Page Count
-        next_page:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Next Page
-      type: object
-      required:
-      - call_logs
-      - page_count
-      - next_page
-      title: CallLogExportPaginated
