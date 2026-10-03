@@ -121,53 +121,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    CallLogExportPaginated:
-      properties:
-        call_logs:
-          items:
-            $ref: '#/components/schemas/CallLogListExportInformation'
-          type: array
-          title: Call Logs
-        page_count:
-          type: integer
-          title: Page Count
-        next_page:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Next Page
-      type: object
-      required:
-      - call_logs
-      - page_count
-      - next_page
-      title: CallLogExportPaginated
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-        input:
-          title: Input
-        ctx:
-          type: object
-          title: Context
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
     CallLogExportInformation:
       properties:
         id:
@@ -249,6 +202,27 @@ components:
       - qa
       - transcripts
       title: CallLogExportInformation
+    CallLogExportPaginated:
+      properties:
+        call_logs:
+          items:
+            $ref: '#/components/schemas/CallLogListExportInformation'
+          type: array
+          title: Call Logs
+        page_count:
+          type: integer
+          title: Page Count
+        next_page:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Next Page
+      type: object
+      required:
+      - call_logs
+      - page_count
+      - next_page
+      title: CallLogExportPaginated
     HTTPValidationError:
       properties:
         detail:
@@ -332,3 +306,29 @@ components:
       - transcripts
       title: CallLogListExportInformation
       description: Call log export information for list endpoint - includes full data except recordings
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+        input:
+          title: Input
+        ctx:
+          type: object
+          title: Context
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError

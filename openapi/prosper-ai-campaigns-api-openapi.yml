@@ -481,6 +481,12 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
+    HumanOnlySubcategory:
+      type: string
+      enum:
+      - STARTING_CALL
+      - MID_CALL
+      title: HumanOnlySubcategory
     PatientIncomingCallCategory:
       type: string
       enum:
@@ -495,21 +501,6 @@ components:
       - NO_RESPONSE
       - NOT_CONNECTED
       title: PatientIncomingCallCategory
-    DeleteTargetsRequest:
-      properties:
-        target_ids:
-          items:
-            type: string
-          type: array
-          title: Target Ids
-          description: The IDs of the targets to delete
-          examples:
-          - - 1234-abcd-1234
-            - 5678-efgh-5678
-      type: object
-      required:
-      - target_ids
-      title: DeleteTargetsRequest
     CampaignTargetPatientResponse:
       properties:
         id:
@@ -667,6 +658,95 @@ components:
         vw_campaign_targets_export_patient view. This view excludes fax_links and
 
         payor_api_data for better performance.'
+    PaginatedCampaignTargetsPatientResponse:
+      properties:
+        targets:
+          items:
+            $ref: '#/components/schemas/CampaignTargetPatientResponse'
+          type: array
+          title: Targets
+        page_count:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Page Count
+        next_page:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Next Page
+      type: object
+      required:
+      - targets
+      title: PaginatedCampaignTargetsPatientResponse
+      description: 'Paginated response for patient campaign targets using the optimized
+
+        vw_campaign_targets_export_patient view (no fax_links or payor_api_data).'
+    TransferSubCategory:
+      type: string
+      enum:
+      - HUMAN_REQUESTED
+      - INTEGRATION_ERROR
+      - INSURANCE_REJECTED
+      - TRANSFER_REQUESTED
+      - NATURAL_TRANSFER
+      title: TransferSubCategory
+    DeleteTargetsRequest:
+      properties:
+        target_ids:
+          items:
+            type: string
+          type: array
+          title: Target Ids
+          description: The IDs of the targets to delete
+          examples:
+          - - 1234-abcd-1234
+            - 5678-efgh-5678
+      type: object
+      required:
+      - target_ids
+      title: DeleteTargetsRequest
+    PatientInput:
+      properties:
+        first_name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: First Name
+          description: Patient first name
+        last_name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Last Name
+          description: Patient last name
+        date_of_birth:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Date Of Birth
+          description: Patient date of birth (YYYY-MM-DD)
+        phone_number:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Phone Number
+          description: Patient phone number
+        external_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: External Id
+          description: Patient external ID (e.g. MRN)
+        extra_data:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          title: Extra Data
+          description: Additional patient metadata
+      type: object
+      title: PatientInput
     CampaignTargetStatus:
       type: string
       enum:
@@ -688,106 +768,6 @@ components:
       - TECHNICAL_ISSUE
       - OTHER
       title: ServiceNotAvailableSubCategory
-    PatientIncomingSchedulingCallCategory:
-      type: string
-      enum:
-      - SWITCHBOARD
-      - DEFLECTED
-      - NO_RESPONSE
-      - USER_EARLY_DISCONNECT
-      - FAST_USER_HANG_UP
-      - TRANSFER_SOP
-      - UNRESOLVED
-      title: PatientIncomingSchedulingCallCategory
-    TargetInput:
-      properties:
-        id:
-          type: string
-          title: Id
-          description: The ID of the target
-        external_id:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: External Id
-          description: The external ID of the target
-        phone_number:
-          anyOf:
-          - type: string
-          - $ref: '#/components/schemas/TargetInputPhoneNumber'
-          title: Phone Number
-          description: The phone number of the target
-        fallback_phone_number:
-          anyOf:
-          - type: string
-          - $ref: '#/components/schemas/TargetInputPhoneNumber'
-          - type: 'null'
-          title: Fallback Phone Number
-          description: The fallback phone number of the target
-        input_data:
-          additionalProperties: true
-          type: object
-          title: Input Data
-          description: The input data of the target
-        patient:
-          anyOf:
-          - $ref: '#/components/schemas/PatientInput'
-          - type: 'null'
-          description: Patient to link to this target.
-        pre_call_data:
-          anyOf:
-          - additionalProperties: true
-            type: object
-          - type: 'null'
-          title: Pre Call Data
-          description: The pre-call data of the target
-      type: object
-      required:
-      - phone_number
-      title: TargetInput
-    EHREventType:
-      type: string
-      enum:
-      - appointment_created
-      - appointment_cancelled
-      - patient_registered
-      title: EHREventType
-    NotFoundSubCategory:
-      type: string
-      enum:
-      - PROVIDER
-      - MEMBER
-      - FACILITY
-      - REQUEST
-      - OTHER
-      title: NotFoundSubCategory
-    HumanOnlySubcategory:
-      type: string
-      enum:
-      - STARTING_CALL
-      - MID_CALL
-      title: HumanOnlySubcategory
-    PaginatedCampaignTargetsResponse:
-      properties:
-        targets:
-          items:
-            $ref: '#/components/schemas/CampaignTargetResponse'
-          type: array
-          title: Targets
-        page_count:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Page Count
-        next_page:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Next Page
-      type: object
-      required:
-      - targets
-      title: PaginatedCampaignTargetsResponse
     CampaignTargetResponse:
       properties:
         id:
@@ -940,41 +920,6 @@ components:
       - payor_api_data
       - external_id
       title: CampaignTargetResponse
-    PayorCallCategory:
-      type: string
-      enum:
-      - GOOD
-      - NO_RESPONSE
-      - TRANSFER
-      - TRANSFER_FAILED
-      - VOICEMAIL
-      - SERVICE_NOT_AVAILABLE
-      - HUMAN_ONLY
-      - AFTER_HOURS
-      - CLOSED_FOR_HOLIDAYS
-      - IVR_LOOP
-      - INPUT_DATA_ISSUE
-      - WRONG_PHONE_NUMBER
-      - NOT_FOUND
-      - UNPROCESSABLE_BY_PHONE
-      - DISCONNECTED
-      - NOT_ALL_DATA_POINTS_RETRIEVED
-      - MEMBER_CONSENT_REQUIRED
-      - SLA_EXPIRED
-      - PAYOR_NOT_SUPPORTED
-      - NO_OPERATING_HOURS
-      title: PayorCallCategory
-    IVRLoopSubCategory:
-      type: string
-      enum:
-      - NOT_RECOGNIZE_DATA
-      - NOT_FOUND
-      - LONG_WAITING_PERIOD
-      - BAD_INTERACTION_WITH_IVR
-      - IVR_ONLY_NUMBER
-      - VOICEMAIL
-      - CALLBACK_OFFERED
-      title: IVRLoopSubCategory
     ValidationError:
       properties:
         loc:
@@ -1001,90 +946,6 @@ components:
       - msg
       - type
       title: ValidationError
-    InputDataIssueSubCategory:
-      type: string
-      enum:
-      - MISSING_INFORMATION
-      - INCORRECT_INFORMATION
-      title: InputDataIssueSubCategory
-    CampaignTargetPatientResolution:
-      type: string
-      enum:
-      - successful
-      - unsuccessful
-      title: CampaignTargetPatientResolution
-    Body_receive_ehr_event_step_api_v1_campaigns__campaign_id__ehr_event__friendly_id__post:
-      properties:
-        event_type:
-          $ref: '#/components/schemas/EHREventType'
-          description: The type of EHR event.
-        event_data:
-          additionalProperties: true
-          type: object
-          title: Event Data
-        target_id:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Target Id
-          description: Optional target ID.
-        external_id:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: External Id
-          description: Optional external ID.
-      type: object
-      required:
-      - event_type
-      title: Body_receive_ehr_event_step_api_v1_campaigns__campaign_id__ehr_event__friendly_id__post
-    CampaignTargetPayorResolution:
-      type: string
-      enum:
-      - retrieved
-      - not_retrieved
-      title: CampaignTargetPayorResolution
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    LaunchTargetsRequest:
-      properties:
-        target_ids:
-          anyOf:
-          - items:
-              type: string
-            type: array
-          - type: 'null'
-          title: Target Ids
-          description: The IDs of the campaign targets to call. If not provided, count must be set.
-        count:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Count
-          description: Number of random pending targets to launch. If not provided, target_ids must be set.
-        prioritize_oldest:
-          type: boolean
-          title: Prioritize Oldest
-          description: Whether to prioritize oldest targets when launching.
-          default: false
-      type: object
-      title: LaunchTargetsRequest
-    TransferSubCategory:
-      type: string
-      enum:
-      - HUMAN_REQUESTED
-      - INTEGRATION_ERROR
-      - INSURANCE_REJECTED
-      - TRANSFER_REQUESTED
-      - NATURAL_TRANSFER
-      title: TransferSubCategory
     RerunFailedWebhooksBody:
       properties:
         from_date:
@@ -1102,6 +963,30 @@ components:
       - from_date
       - to_date
       title: RerunFailedWebhooksBody
+    CampaignTargetPatientResolution:
+      type: string
+      enum:
+      - successful
+      - unsuccessful
+      title: CampaignTargetPatientResolution
+    EHREventType:
+      type: string
+      enum:
+      - appointment_created
+      - appointment_cancelled
+      - patient_registered
+      title: EHREventType
+    IVRLoopSubCategory:
+      type: string
+      enum:
+      - NOT_RECOGNIZE_DATA
+      - NOT_FOUND
+      - LONG_WAITING_PERIOD
+      - BAD_INTERACTION_WITH_IVR
+      - IVR_ONLY_NUMBER
+      - VOICEMAIL
+      - CALLBACK_OFFERED
+      title: IVRLoopSubCategory
     TargetInputPhoneNumber:
       properties:
         value:
@@ -1117,30 +1002,17 @@ components:
       required:
       - value
       title: TargetInputPhoneNumber
-    PaginatedCampaignTargetsPatientResponse:
-      properties:
-        targets:
-          items:
-            $ref: '#/components/schemas/CampaignTargetPatientResponse'
-          type: array
-          title: Targets
-        page_count:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Page Count
-        next_page:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Next Page
-      type: object
-      required:
-      - targets
-      title: PaginatedCampaignTargetsPatientResponse
-      description: 'Paginated response for patient campaign targets using the optimized
-
-        vw_campaign_targets_export_patient view (no fax_links or payor_api_data).'
+    PatientIncomingSchedulingCallCategory:
+      type: string
+      enum:
+      - SWITCHBOARD
+      - DEFLECTED
+      - NO_RESPONSE
+      - USER_EARLY_DISCONNECT
+      - FAST_USER_HANG_UP
+      - TRANSFER_SOP
+      - UNRESOLVED
+      title: PatientIncomingSchedulingCallCategory
     PatientCallCategory:
       type: string
       enum:
@@ -1159,13 +1031,44 @@ components:
       - NOT_INTERESTED_RIGHT_NOW
       - BLACKLISTED_PHONE
       title: PatientCallCategory
-    UnprocessableByPhoneSubCategory:
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    InputDataIssueSubCategory:
       type: string
       enum:
-      - FAX
-      - INSURANCE_PORTAL
-      - AUTOMATED_SYSTEM
-      title: UnprocessableByPhoneSubCategory
+      - MISSING_INFORMATION
+      - INCORRECT_INFORMATION
+      title: InputDataIssueSubCategory
+    ProviderCallCategory:
+      type: string
+      enum:
+      - GOOD
+      - WRONG_USER
+      - PROVIDER_NO_LONGER_AT_LOCATION
+      - DISCONNECTED
+      - WRONG_PHONE_NUMBER
+      - HUMAN_ONLY
+      - DATA_ISSUE
+      - CALLBACK_REQUESTED
+      - TRANSFER_HANG_UP
+      - UNPROCESSABLE_BY_PHONE
+      - MEMBER_CONSENT_REQUIRED
+      - IVR_LOOP
+      - CLOSED_FOR_HOLIDAYS
+      - NO_RESPONSE
+      - VOICEMAIL
+      - AFTER_HOURS
+      - TRANSFER
+      - TRANSFER_FAILED
+      - BLACKLISTED_PHONE
+      title: ProviderCallCategory
     WeekSchedule:
       properties:
         monday:
@@ -1209,70 +1112,36 @@ components:
           default: US/Eastern
       type: object
       title: WeekSchedule
-    ProviderCallCategory:
+    PayorCallCategory:
       type: string
       enum:
       - GOOD
-      - WRONG_USER
-      - PROVIDER_NO_LONGER_AT_LOCATION
-      - DISCONNECTED
-      - WRONG_PHONE_NUMBER
-      - HUMAN_ONLY
-      - DATA_ISSUE
-      - CALLBACK_REQUESTED
-      - TRANSFER_HANG_UP
-      - UNPROCESSABLE_BY_PHONE
-      - MEMBER_CONSENT_REQUIRED
-      - IVR_LOOP
-      - CLOSED_FOR_HOLIDAYS
       - NO_RESPONSE
-      - VOICEMAIL
-      - AFTER_HOURS
       - TRANSFER
       - TRANSFER_FAILED
-      - BLACKLISTED_PHONE
-      title: ProviderCallCategory
-    PatientInput:
-      properties:
-        first_name:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: First Name
-          description: Patient first name
-        last_name:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Last Name
-          description: Patient last name
-        date_of_birth:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Date Of Birth
-          description: Patient date of birth (YYYY-MM-DD)
-        phone_number:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Phone Number
-          description: Patient phone number
-        external_id:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: External Id
-          description: Patient external ID (e.g. MRN)
-        extra_data:
-          anyOf:
-          - additionalProperties: true
-            type: object
-          - type: 'null'
-          title: Extra Data
-          description: Additional patient metadata
-      type: object
-      title: PatientInput
+      - VOICEMAIL
+      - SERVICE_NOT_AVAILABLE
+      - HUMAN_ONLY
+      - AFTER_HOURS
+      - CLOSED_FOR_HOLIDAYS
+      - IVR_LOOP
+      - INPUT_DATA_ISSUE
+      - WRONG_PHONE_NUMBER
+      - NOT_FOUND
+      - UNPROCESSABLE_BY_PHONE
+      - DISCONNECTED
+      - NOT_ALL_DATA_POINTS_RETRIEVED
+      - MEMBER_CONSENT_REQUIRED
+      - SLA_EXPIRED
+      - PAYOR_NOT_SUPPORTED
+      - NO_OPERATING_HOURS
+      title: PayorCallCategory
+    CampaignTargetPayorResolution:
+      type: string
+      enum:
+      - retrieved
+      - not_retrieved
+      title: CampaignTargetPayorResolution
     AddTargetsRequest:
       properties:
         targets:
@@ -1310,6 +1179,105 @@ components:
           default: true
       type: object
       title: AddTargetsRequest
+    TargetInput:
+      properties:
+        id:
+          type: string
+          title: Id
+          description: The ID of the target
+        external_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: External Id
+          description: The external ID of the target
+        phone_number:
+          anyOf:
+          - type: string
+          - $ref: '#/components/schemas/TargetInputPhoneNumber'
+          title: Phone Number
+          description: The phone number of the target
+        fallback_phone_number:
+          anyOf:
+          - type: string
+          - $ref: '#/components/schemas/TargetInputPhoneNumber'
+          - type: 'null'
+          title: Fallback Phone Number
+          description: The fallback phone number of the target
+        input_data:
+          additionalProperties: true
+          type: object
+          title: Input Data
+          description: The input data of the target
+        patient:
+          anyOf:
+          - $ref: '#/components/schemas/PatientInput'
+          - type: 'null'
+          description: Patient to link to this target.
+        pre_call_data:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          title: Pre Call Data
+          description: The pre-call data of the target
+      type: object
+      required:
+      - phone_number
+      title: TargetInput
+    UnprocessableByPhoneSubCategory:
+      type: string
+      enum:
+      - FAX
+      - INSURANCE_PORTAL
+      - AUTOMATED_SYSTEM
+      title: UnprocessableByPhoneSubCategory
+    Body_receive_ehr_event_step_api_v1_campaigns__campaign_id__ehr_event__friendly_id__post:
+      properties:
+        event_type:
+          $ref: '#/components/schemas/EHREventType'
+          description: The type of EHR event.
+        event_data:
+          additionalProperties: true
+          type: object
+          title: Event Data
+        target_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Target Id
+          description: Optional target ID.
+        external_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: External Id
+          description: Optional external ID.
+      type: object
+      required:
+      - event_type
+      title: Body_receive_ehr_event_step_api_v1_campaigns__campaign_id__ehr_event__friendly_id__post
+    PaginatedCampaignTargetsResponse:
+      properties:
+        targets:
+          items:
+            $ref: '#/components/schemas/CampaignTargetResponse'
+          type: array
+          title: Targets
+        page_count:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Page Count
+        next_page:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Next Page
+      type: object
+      required:
+      - targets
+      title: PaginatedCampaignTargetsResponse
     TimeIntervalNoTz:
       properties:
         start:
@@ -1323,3 +1291,35 @@ components:
       - start
       - end
       title: TimeIntervalNoTz
+    LaunchTargetsRequest:
+      properties:
+        target_ids:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          title: Target Ids
+          description: The IDs of the campaign targets to call. If not provided, count must be set.
+        count:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Count
+          description: Number of random pending targets to launch. If not provided, target_ids must be set.
+        prioritize_oldest:
+          type: boolean
+          title: Prioritize Oldest
+          description: Whether to prioritize oldest targets when launching.
+          default: false
+      type: object
+      title: LaunchTargetsRequest
+    NotFoundSubCategory:
+      type: string
+      enum:
+      - PROVIDER
+      - MEMBER
+      - FACILITY
+      - REQUEST
+      - OTHER
+      title: NotFoundSubCategory
