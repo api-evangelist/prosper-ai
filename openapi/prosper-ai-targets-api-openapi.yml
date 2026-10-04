@@ -68,56 +68,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    HumanOnlySubcategory:
-      type: string
-      enum:
-      - STARTING_CALL
-      - MID_CALL
-      title: HumanOnlySubcategory
-    PatientIncomingCallCategory:
-      type: string
-      enum:
-      - TRANSFER_BY_USER
-      - TRANSFER_BY_ASSISTANT
-      - INSTANT_TRANSFER
-      - TRANSFER
-      - TRANSFER_FAILED
-      - CALL_DROPPED
-      - SUCCESSFUL_CALL
-      - UNSUCCESSFUL_CALL
-      - NO_RESPONSE
-      - NOT_CONNECTED
-      title: PatientIncomingCallCategory
-    TransferSubCategory:
-      type: string
-      enum:
-      - HUMAN_REQUESTED
-      - INTEGRATION_ERROR
-      - INSURANCE_REJECTED
-      - TRANSFER_REQUESTED
-      - NATURAL_TRANSFER
-      title: TransferSubCategory
-    CampaignTargetStatus:
-      type: string
-      enum:
-      - Pending
-      - Scheduled
-      - In Progress
-      - Post-processing
-      - Finished
-      - To review
-      - Failed
-      - Waiting
-      - SMS Scheduled
-      title: CampaignTargetStatus
-    ServiceNotAvailableSubCategory:
-      type: string
-      enum:
-      - PHONE_NUMBER_NOT_AVAILABLE
-      - CLOGGED_SERVICE
-      - TECHNICAL_ISSUE
-      - OTHER
-      title: ServiceNotAvailableSubCategory
     CampaignTargetResponse:
       properties:
         id:
@@ -270,6 +220,108 @@ components:
       - payor_api_data
       - external_id
       title: CampaignTargetResponse
+    PatientCallCategory:
+      type: string
+      enum:
+      - GOOD
+      - NO_RESPONSE
+      - TRANSFER
+      - TRANSFER_FAILED
+      - VOICEMAIL
+      - SERVICE_NOT_AVAILABLE
+      - HUMAN_ONLY
+      - CALLBACK_REQUESTED
+      - MANAGER_REQUESTED
+      - DISCONNECTED
+      - DNC_REQUESTED
+      - WRONG_USER
+      - NOT_INTERESTED_RIGHT_NOW
+      - BLACKLISTED_PHONE
+      title: PatientCallCategory
+    TransferSubCategory:
+      type: string
+      enum:
+      - HUMAN_REQUESTED
+      - INTEGRATION_ERROR
+      - INSURANCE_REJECTED
+      - TRANSFER_REQUESTED
+      - NATURAL_TRANSFER
+      title: TransferSubCategory
+    PatientIncomingCallCategory:
+      type: string
+      enum:
+      - TRANSFER_BY_USER
+      - TRANSFER_BY_ASSISTANT
+      - INSTANT_TRANSFER
+      - TRANSFER
+      - TRANSFER_FAILED
+      - CALL_DROPPED
+      - SUCCESSFUL_CALL
+      - UNSUCCESSFUL_CALL
+      - NO_RESPONSE
+      - NOT_CONNECTED
+      title: PatientIncomingCallCategory
+    ProviderCallCategory:
+      type: string
+      enum:
+      - GOOD
+      - WRONG_USER
+      - PROVIDER_NO_LONGER_AT_LOCATION
+      - DISCONNECTED
+      - WRONG_PHONE_NUMBER
+      - HUMAN_ONLY
+      - DATA_ISSUE
+      - CALLBACK_REQUESTED
+      - TRANSFER_HANG_UP
+      - UNPROCESSABLE_BY_PHONE
+      - MEMBER_CONSENT_REQUIRED
+      - IVR_LOOP
+      - CLOSED_FOR_HOLIDAYS
+      - NO_RESPONSE
+      - VOICEMAIL
+      - AFTER_HOURS
+      - TRANSFER
+      - TRANSFER_FAILED
+      - BLACKLISTED_PHONE
+      title: ProviderCallCategory
+    UpdateTargetInputDataRequest:
+      properties:
+        input_data:
+          additionalProperties: true
+          type: object
+          title: Input Data
+          description: Fields to merge into the target's input_data. Only the keys present here are updated; existing keys not included are left unchanged.
+        only_if_not_started:
+          type: boolean
+          title: Only If Not Started
+          description: When true (default), the edit is rejected with 409 if the target has already started executing — i.e. a call has been placed, or it has left the Pending/Scheduled staging states. A Scheduled target with no calls yet is still editable. Set false to edit regardless.
+          default: true
+      type: object
+      required:
+      - input_data
+      title: UpdateTargetInputDataRequest
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    CampaignTargetStatus:
+      type: string
+      enum:
+      - Pending
+      - Scheduled
+      - In Progress
+      - Post-processing
+      - Finished
+      - To review
+      - Failed
+      - Waiting
+      - SMS Scheduled
+      title: CampaignTargetStatus
     ValidationError:
       properties:
         loc:
@@ -296,23 +348,41 @@ components:
       - msg
       - type
       title: ValidationError
+    HumanOnlySubcategory:
+      type: string
+      enum:
+      - STARTING_CALL
+      - MID_CALL
+      title: HumanOnlySubcategory
     CampaignTargetPatientResolution:
       type: string
       enum:
       - successful
       - unsuccessful
       title: CampaignTargetPatientResolution
-    IVRLoopSubCategory:
+    ServiceNotAvailableSubCategory:
       type: string
       enum:
-      - NOT_RECOGNIZE_DATA
-      - NOT_FOUND
-      - LONG_WAITING_PERIOD
-      - BAD_INTERACTION_WITH_IVR
-      - IVR_ONLY_NUMBER
-      - VOICEMAIL
-      - CALLBACK_OFFERED
-      title: IVRLoopSubCategory
+      - PHONE_NUMBER_NOT_AVAILABLE
+      - CLOGGED_SERVICE
+      - TECHNICAL_ISSUE
+      - OTHER
+      title: ServiceNotAvailableSubCategory
+    NotFoundSubCategory:
+      type: string
+      enum:
+      - PROVIDER
+      - MEMBER
+      - FACILITY
+      - REQUEST
+      - OTHER
+      title: NotFoundSubCategory
+    CampaignTargetPayorResolution:
+      type: string
+      enum:
+      - retrieved
+      - not_retrieved
+      title: CampaignTargetPayorResolution
     PatientIncomingSchedulingCallCategory:
       type: string
       enum:
@@ -324,62 +394,30 @@ components:
       - TRANSFER_SOP
       - UNRESOLVED
       title: PatientIncomingSchedulingCallCategory
-    PatientCallCategory:
+    IVRLoopSubCategory:
       type: string
       enum:
-      - GOOD
-      - NO_RESPONSE
-      - TRANSFER
-      - TRANSFER_FAILED
+      - NOT_RECOGNIZE_DATA
+      - NOT_FOUND
+      - LONG_WAITING_PERIOD
+      - BAD_INTERACTION_WITH_IVR
+      - IVR_ONLY_NUMBER
       - VOICEMAIL
-      - SERVICE_NOT_AVAILABLE
-      - HUMAN_ONLY
-      - CALLBACK_REQUESTED
-      - MANAGER_REQUESTED
-      - DISCONNECTED
-      - DNC_REQUESTED
-      - WRONG_USER
-      - NOT_INTERESTED_RIGHT_NOW
-      - BLACKLISTED_PHONE
-      title: PatientCallCategory
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
+      - CALLBACK_OFFERED
+      title: IVRLoopSubCategory
+    UnprocessableByPhoneSubCategory:
+      type: string
+      enum:
+      - FAX
+      - INSURANCE_PORTAL
+      - AUTOMATED_SYSTEM
+      title: UnprocessableByPhoneSubCategory
     InputDataIssueSubCategory:
       type: string
       enum:
       - MISSING_INFORMATION
       - INCORRECT_INFORMATION
       title: InputDataIssueSubCategory
-    ProviderCallCategory:
-      type: string
-      enum:
-      - GOOD
-      - WRONG_USER
-      - PROVIDER_NO_LONGER_AT_LOCATION
-      - DISCONNECTED
-      - WRONG_PHONE_NUMBER
-      - HUMAN_ONLY
-      - DATA_ISSUE
-      - CALLBACK_REQUESTED
-      - TRANSFER_HANG_UP
-      - UNPROCESSABLE_BY_PHONE
-      - MEMBER_CONSENT_REQUIRED
-      - IVR_LOOP
-      - CLOSED_FOR_HOLIDAYS
-      - NO_RESPONSE
-      - VOICEMAIL
-      - AFTER_HOURS
-      - TRANSFER
-      - TRANSFER_FAILED
-      - BLACKLISTED_PHONE
-      title: ProviderCallCategory
     PayorCallCategory:
       type: string
       enum:
@@ -404,41 +442,3 @@ components:
       - PAYOR_NOT_SUPPORTED
       - NO_OPERATING_HOURS
       title: PayorCallCategory
-    CampaignTargetPayorResolution:
-      type: string
-      enum:
-      - retrieved
-      - not_retrieved
-      title: CampaignTargetPayorResolution
-    UnprocessableByPhoneSubCategory:
-      type: string
-      enum:
-      - FAX
-      - INSURANCE_PORTAL
-      - AUTOMATED_SYSTEM
-      title: UnprocessableByPhoneSubCategory
-    UpdateTargetInputDataRequest:
-      properties:
-        input_data:
-          additionalProperties: true
-          type: object
-          title: Input Data
-          description: Fields to merge into the target's input_data. Only the keys present here are updated; existing keys not included are left unchanged.
-        only_if_not_started:
-          type: boolean
-          title: Only If Not Started
-          description: When true (default), the edit is rejected with 409 if the target has already started executing — i.e. a call has been placed, or it has left the Pending/Scheduled staging states. A Scheduled target with no calls yet is still editable. Set false to edit regardless.
-          default: true
-      type: object
-      required:
-      - input_data
-      title: UpdateTargetInputDataRequest
-    NotFoundSubCategory:
-      type: string
-      enum:
-      - PROVIDER
-      - MEMBER
-      - FACILITY
-      - REQUEST
-      - OTHER
-      title: NotFoundSubCategory

@@ -121,6 +121,27 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
+    CallLogExportPaginated:
+      properties:
+        call_logs:
+          items:
+            $ref: '#/components/schemas/CallLogListExportInformation'
+          type: array
+          title: Call Logs
+        page_count:
+          type: integer
+          title: Page Count
+        next_page:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Next Page
+      type: object
+      required:
+      - call_logs
+      - page_count
+      - next_page
+      title: CallLogExportPaginated
     CallLogExportInformation:
       properties:
         id:
@@ -202,27 +223,6 @@ components:
       - qa
       - transcripts
       title: CallLogExportInformation
-    CallLogExportPaginated:
-      properties:
-        call_logs:
-          items:
-            $ref: '#/components/schemas/CallLogListExportInformation'
-          type: array
-          title: Call Logs
-        page_count:
-          type: integer
-          title: Page Count
-        next_page:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Next Page
-      type: object
-      required:
-      - call_logs
-      - page_count
-      - next_page
-      title: CallLogExportPaginated
     HTTPValidationError:
       properties:
         detail:
